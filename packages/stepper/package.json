@@ -1,0 +1,51 @@
+{
+    "name": "@spectrum-web-components/stepper",
+    "publishConfig": {
+        "access": "public"
+    },
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/adobe/spectrum-web-components.git",
+        "directory": "packages/stepper"
+    },
+    "bugs": {
+        "url": "https://github.com/adobe/spectrum-web-components/issues"
+    },
+    "homepage": "https://adobe.github.io/spectrum-web-components/components/stepper",
+    "keywords": [
+        "spectrum css",
+        "web components",
+        "lit-element",
+        "lit-html"
+    ],
+    "version": "0.0.1",
+    "description": "",
+    "main": "src/index.js",
+    "module": "src/index.js",
+    "type": "module",
+    "files": [
+        "custom-elements.json",
+        "/lib/",
+        "/src/"
+    ],
+    "scripts": {
+        "test": "karma start --coverage"
+    },
+    "author": "",
+    "license": "Apache-2.0",
+    "peerDependencies": {
+        "lit-element": "^2.1.0",
+        "lit-html": "^1.0.0"
+    },
+    "devDependencies": {
+        "@spectrum-css/stepper": "^3.0.0-beta.7"
+    },
+    "dependencies": {
+        "@spectrum-web-components/base": "^0.4.1",
+        "@spectrum-web-components/button": "^0.13.1",
+        "@spectrum-web-components/icon": "^0.9.1",
+        "@spectrum-web-components/icons-ui": "^0.6.1",
+        "@spectrum-web-components/textfield": "^0.8.1",
+        "tslib": "^2.0.0"
+    }
+}

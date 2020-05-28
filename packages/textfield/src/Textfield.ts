@@ -40,7 +40,7 @@ export class Textfield extends Focusable {
     @property({ type: Boolean, reflect: true })
     public focused = false;
 
-    @query('#input')
+    @query('.input')
     private inputElement!: HTMLInputElement | HTMLTextAreaElement;
 
     @property({ type: Boolean, reflect: true })
@@ -119,11 +119,11 @@ export class Textfield extends Focusable {
         );
     }
 
-    private onFocus(): void {
+    protected onFocus(): void {
         this.focused = true;
     }
 
-    private onBlur(): void {
+    protected onBlur(): void {
         this.focused = false;
     }
 
@@ -153,7 +153,7 @@ export class Textfield extends Focusable {
             <!-- @ts-ignore -->
             <textarea
                 aria-label=${this.label || this.placeholder}
-                id="input"
+                class="input"
                 maxlength=${ifDefined(
                     this.maxlength > -1 ? this.maxlength : undefined
                 )}
@@ -180,7 +180,7 @@ export class Textfield extends Focusable {
             <input
                 type="text"
                 aria-label=${this.label || this.placeholder}
-                id="input"
+                class="input"
                 maxlength=${ifDefined(
                     this.maxlength > -1 ? this.maxlength : undefined
                 )}
