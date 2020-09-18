@@ -95,7 +95,7 @@ export class PickerBase extends SizedMixin(Focusable) {
     public open = false;
 
     public menuItems: MenuItem[] = [];
-    private restoreChildren?: Function;
+    private restoreChildren?: () => void;
 
     public optionsMenu!: Menu;
 
