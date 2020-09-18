@@ -1,5 +1,3 @@
-#!/usr/bin/env node
-
 /*
 Copyright 2020 Adobe. All rights reserved.
 This file is licensed to you under the Apache License, Version 2.0 (the "License");
@@ -12,13 +10,5 @@ OF ANY KIND, either express or implied. See the License for the specific languag
 governing permissions and limitations under the License.
 */
 
-import chokidar from 'chokidar';
-import { processCSS } from './build-css.js';
-
-// One-liner for current directory
-chokidar
-    .watch('./packages/*/src/*.css')
-    .on('change', processCSS)
-    .on('add', processCSS);
-
-console.log('Listening to CSS...');
+import '@spectrum-web-components/theme/theme-lightest.js';
+import '@spectrum-web-components/theme/scale-medium.js';
