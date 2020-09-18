@@ -357,9 +357,9 @@ export class ColorArea extends SpectrumElement {
                 class="gradient"
                 style="background:
                     linear-gradient(to top, black 0%, hsla(${this
-                    .hue}, 100%, 0%, 0) 100%),
+                    .hue}, 100%, 0.01%, 0) 100%),
                     linear-gradient(to right, white 0%, hsla(${this
-                    .hue}, 100%, 0%, 0) 100%), hsl(${this.hue}, 100%, 50%);"
+                    .hue}, 100%, 0.01%, 0) 100%), hsl(${this.hue}, 100%, 50%);"
             >
                 <slot name="gradient"></slot>
             </div>
@@ -371,9 +371,9 @@ export class ColorArea extends SpectrumElement {
                 style="transform: translate(${this.x * width}px, ${this.y *
                 height}px);"
                 ${streamingListener({
-                    start: ["pointerdown", this.handlePointerdown],
-                    streamInside: ["pointermove", this.handlePointermove ],
-                    end: [['pointerup', 'pointercancel'], this.handlePointerup]
+                    start: ['pointerdown', this.handlePointerdown],
+                    streamInside: ['pointermove', this.handlePointermove],
+                    end: [['pointerup', 'pointercancel'], this.handlePointerup],
                 })}
             ></sp-color-handle>
 
