@@ -10,12 +10,12 @@ OF ANY KIND, either express or implied. See the License for the specific languag
 governing permissions and limitations under the License.
 */
 
-import { fixture, html, waitUntil } from '@open-wc/testing';
+import { fixture, waitUntil } from '@open-wc/testing';
 import { visualDiff } from '@web/test-runner-visual-regression';
 import '@spectrum-web-components/story-decorator/sp-story-decorator.js';
 import { Color, Scale } from '@spectrum-web-components/theme';
 import { StoryDecorator } from '@spectrum-web-components/story-decorator/src/StoryDecorator';
-import { TemplateResult } from '@spectrum-web-components/base';
+import { TemplateResult, html } from '@spectrum-web-components/base';
 
 const wrap = (story: TemplateResult) => html`
     <sp-story-decorator reduce-motion screenshot>${story}</sp-story-decorator>
