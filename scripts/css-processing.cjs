@@ -27,6 +27,9 @@ const postCSSPlugins = (resourcePath) => {
                 'last 4 Safari versions',
                 'last 4 iOS versions',
             ],
+            features: {
+                'dir-pseudo-class': false,
+            },
         }),
         // minify the css with cssnano presets
         require('cssnano')({

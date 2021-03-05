@@ -26,16 +26,7 @@ import { fileURLToPath } from 'url';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
-// const srcPath = path.resolve(__dirname, '../src');
-// const componentDir = path.resolve(__dirname, 'src/components');
 const apiDocPath = path.resolve(__dirname, 'api-docs');
-
-// const litComponentDirectories = [
-//     componentDir,
-//     srcPath,
-//     path.dirname('/node_module/prismjs/themes/prism-okaidia.css'),
-//     path.dirname('/node_module/prismjs/themes/prism.css'),
-// ];
 
 const mainCSS = [path.resolve(__dirname, '/src/main.css')];
 
@@ -117,6 +108,9 @@ export default merge(openWcConfig, {
                                             'last 4 Safari versions',
                                             'last 4 iOS versions',
                                         ],
+                                        features: {
+                                            'dir-pseudo-class': false,
+                                        },
                                     }),
                                     // minify the css with cssnano presets
                                     cssnano({
