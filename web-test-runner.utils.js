@@ -66,13 +66,31 @@ colors.forEach((color) => {
             });
             vrtGroups.push({
                 name: `vrt-${color}-${scale}-${dir}`,
-                files: 'test/visual/test.js',
+                files: 'packages/*/test/*.test-vrt.js',
                 testRunnerHtml: testHTML,
                 browsers: [playwrightLauncher({ product: 'chromium' })],
             });
         });
     });
 });
+
+vrtGroups = [
+    ...vrtGroups,
+    ...packages.reduce((acc, pkg) => {
+        const skipPkgs = ['bundle', 'modal', 'styles'];
+        if (!skipPkgs.includes(pkg)) {
+            acc.push({
+                name: `vrt-${pkg}`,
+                files: `packages/${pkg}/test/*.test-vrt.js`,
+                testRunnerHtml: vrtHTML({
+                    reduceMotion: true,
+                }),
+                browsers: [playwrightLauncher({ product: 'chromium' })],
+            });
+        }
+        return acc;
+    }, []),
+];
 
 const configuredVisualRegressionPlugin = () =>
     visualRegressionPlugin({
