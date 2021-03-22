@@ -3321,6 +3321,11 @@
   resolved "https://registry.yarnpkg.com/@spectrum-css/dialog/-/dialog-3.0.3.tgz#7715a4ea435e753afb623d99ca5917ed1bcd6f34"
   integrity sha512-AhmKgfRIVyTe3ABiJ8lLUQL34VB/H6fN16na2LlbDRJvyRMzkdN1Xf2i6U3f4OMd3qQ8Gm5xat4BvMxIQPBAUQ==
 
+"@spectrum-css/dietvars@^1.1.0":
+  version "1.1.0"
+  resolved "https://registry.yarnpkg.com/@spectrum-css/dietvars/-/dietvars-1.1.0.tgz#9d10979f364a933abc35bcb5bb9448390de2062a"
+  integrity sha512-f0RiPt81ulxohbGmIF3Wvdnu8U/5Xb1rY8iJ4wgLVTx0fCkOD1tbP3bipes/R+8DAum3lIKQvKitMkVuUgTlgg==
+
 "@spectrum-css/divider@^1.0.3":
   version "1.0.3"
   resolved "https://registry.yarnpkg.com/@spectrum-css/divider/-/divider-1.0.3.tgz#639e2ebaa0834efa40f42397668bbd5c153ea385"
@@ -3492,15 +3497,6 @@
   version "3.0.2"
   resolved "https://registry.yarnpkg.com/@spectrum-css/vars/-/vars-3.0.2.tgz#ea9062c3c98dfc6ba59e5df14a03025ad8969999"
   integrity sha512-vzS9KqYXot4J3AEER/u618MXWAS+IoMvYMNrOoscKiLLKYQWenaueakUWulFonToPd/9vIpqtdbwxznqrK5qDw==
-
-"@spectrum-web-components/shared@^0.11.1":
-  version "0.11.1"
-  resolved "https://registry.yarnpkg.com/@spectrum-web-components/shared/-/shared-0.11.1.tgz#5105e966bd25a4c8bcf43336c8212b6d819a8c32"
-  integrity sha512-vXll2JdA8GItTxaaXX7XZPfPZcqrRqe2ILuyTAzcSlZIroPcsDZnJtJEjviiEnUG8TAXVsim9Rq9+sSJ3kw9SA==
-  dependencies:
-    "@spectrum-web-components/base" "^0.4.1"
-    focus-visible "^5.1.0"
-    tslib "^2.0.0"
 
 "@stylelint/postcss-css-in-js@^0.37.2":
   version "0.37.2"
@@ -4560,7 +4556,7 @@
     rollup-plugin-terser "^7.0.2"
     storybook-addon-markdown-docs "^1.0.1"
 
-"@web/dev-server@0.1.17", "@web/dev-server@^0.1.17":
+"@web/dev-server@^0.1.17":
   version "0.1.17"
   resolved "https://registry.yarnpkg.com/@web/dev-server/-/dev-server-0.1.17.tgz#3fad6d96f72f902c04ff27fef1c2ba5cc0eaf5e0"
   integrity sha512-2gdOjkQp97uaORkOL8X90f4retqZ2lA9YqHDljpf4SFg0JWoY8X7EJA9XQG1jJ2x46oQ5zqJX7AiSWc47B2k6A==
@@ -4625,13 +4621,14 @@
     glob "^7.1.6"
     parse5 "^6.0.1"
 
-"@web/rollup-plugin-html@^1.6.0":
-  version "1.6.0"
-  resolved "https://registry.yarnpkg.com/@web/rollup-plugin-html/-/rollup-plugin-html-1.6.0.tgz#fd3f406fd6d74a0cded581953a3146fe9f0454ad"
-  integrity sha512-m5xDI6ZhdAI2nfHwU3NXJ/dcDWghR+g/RrlAtIWYlj8NvXk/ZNqVVK1NbJrI/e5RlgDQ/+OycjmKgyAP9W1tWA==
+"@web/rollup-plugin-html@^1.7.0":
+  version "1.7.0"
+  resolved "https://registry.yarnpkg.com/@web/rollup-plugin-html/-/rollup-plugin-html-1.7.0.tgz#7995a2d43d5910a585b160263d83e65ae1df7f3f"
+  integrity sha512-0WdbcdsN/3UQFWZ7m6Xx32WzgKPnITpKxrCAgY+acxRJlWWQS/fGxW08byhMJfD/58mfRVgmkVcnbBQ4X1oJoA==
   dependencies:
     "@web/parse5-utils" "^1.2.2"
     glob "^7.1.6"
+    html-minifier-terser "^5.1.1"
     parse5 "^6.0.1"
 
 "@web/rollup-plugin-polyfills-loader@^1.0.3":
@@ -4788,10 +4785,10 @@
     "@types/mocha" "^8.2.0"
     "@web/test-runner-core" "^0.10.8"
 
-"@web/test-runner-playwright@^0.8.5":
-  version "0.8.5"
-  resolved "https://registry.yarnpkg.com/@web/test-runner-playwright/-/test-runner-playwright-0.8.5.tgz#a007a6511086ae1706b960eaf994850fdc52a79d"
-  integrity sha512-4UvWKBT/1QogQ1LxFTOB4hrIwEOu6xmYxgRSbaNlQ98ouPApTawXkgKwRcAwJrlAYazzAo98WCQ6w7v+YGxChw==
+"@web/test-runner-playwright@^0.8.6":
+  version "0.8.6"
+  resolved "https://registry.yarnpkg.com/@web/test-runner-playwright/-/test-runner-playwright-0.8.6.tgz#4f1c1543bef2d6b6d7788e4c835e5cf0cf365abe"
+  integrity sha512-GjjCd5MtCxmCsNlfe4HmmRyTg1S1SMAn0+i+2yhG9pvYwSJWLmLqN4AE39ZhlhuPh79spSVU889F6CGEXZGXPg==
   dependencies:
     "@web/test-runner-core" "^0.10.8"
     "@web/test-runner-coverage-v8" "^0.4.5"
@@ -17005,7 +17002,7 @@ pkg-up@^3.1.0:
   dependencies:
     find-up "^3.0.0"
 
-playwright@^1.8.1, playwright@^1.9.2:
+playwright@^1.8.1:
   version "1.10.0"
   resolved "https://registry.yarnpkg.com/playwright/-/playwright-1.10.0.tgz#a14d295f1ad886caf4cc5e674afe03ac832066bc"
   integrity sha512-b7SGBcCPq4W3pb4ImEDmNXtO0ZkJbZMuWiShsaNJd+rGfY/6fqwgllsAojmxGSgFmijYw7WxCoPiAIEDIH16Kw==
@@ -22470,7 +22467,7 @@ webpack-bundle-analyzer@^4.3.0:
     sirv "^1.0.7"
     ws "^7.3.1"
 
-webpack-cli@^4.3.1:
+webpack-cli@^4.6.0:
   version "4.6.0"
   resolved "https://registry.yarnpkg.com/webpack-cli/-/webpack-cli-4.6.0.tgz#27ae86bfaec0cf393fcfd58abdc5a229ad32fd16"
   integrity sha512-9YV+qTcGMjQFiY7Nb1kmnupvb1x40lfpj8pwdO/bom+sQiP4OBMKjHq29YQrlDWDPZO9r/qWaRRywKaRDKqBTA==
@@ -22501,7 +22498,7 @@ webpack-dev-middleware@^3.7.2:
     range-parser "^1.2.1"
     webpack-log "^2.0.0"
 
-webpack-dev-server@^3.10.3:
+webpack-dev-server@^3.11.2:
   version "3.11.2"
   resolved "https://registry.yarnpkg.com/webpack-dev-server/-/webpack-dev-server-3.11.2.tgz#695ebced76a4929f0d5de7fd73fafe185fe33708"
   integrity sha512-A80BkuHRQfCiNtGBS1EMf2ChTUs0x+B3wGDFmOeT4rmJOHhHTCH2naNxIHhmkr0/UillP4U3yeIyv1pNp+QDLQ==
@@ -22571,7 +22568,7 @@ webpack-sources@^1.1.0, webpack-sources@^1.4.0, webpack-sources@^1.4.1, webpack-
     source-list-map "^2.0.0"
     source-map "~0.6.1"
 
-webpack@^4.27.0, webpack@^4.41.6:
+webpack@^4.41.6:
   version "4.46.0"
   resolved "https://registry.yarnpkg.com/webpack/-/webpack-4.46.0.tgz#bf9b4404ea20a073605e0a011d188d77cb6ad542"
   integrity sha512-6jJuJjg8znb/xRItk7bkT0+Q7AHCYjjFnvKIWQPkNIOyRqoCGvkOs0ipeQzrqz4l5FtN5ZI/ukEHroeX/o1/5Q==
