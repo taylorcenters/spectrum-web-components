@@ -48,6 +48,7 @@ export class Switch extends CheckboxBase {
     }
 
     protected updated(changes: PropertyValues): void {
+        super.updated(changes);
         if (changes.has('checked')) {
             this.inputElement.setAttribute(
                 'aria-checked',
