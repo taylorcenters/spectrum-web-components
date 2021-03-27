@@ -88,14 +88,14 @@ jobs:
             - checkout
             - restore_cache:
                   keys:
-                      - v2-dependencies-{{ arch }}-{{ checksum "yarn.lock" }}
+                      - v3-dependencies-{{ arch }}-{{ checksum "yarn.lock" }}
             - run:
                   name: Installing Dependencies
-                  command: yarn --ignore-scripts
+                  command: yarn --ignore-scripts --frozen-lockfile --cache-folder ~/.cache/yarn
             - save_cache:
                   paths:
-                      - node_modules
-                  key: v2-dependencies-{{ arch }}-{{ checksum "yarn.lock" }}
+                      - ~/.cache/yarn
+                  key: v3-dependencies-{{ arch }}-{{ checksum "yarn.lock" }}
             - run:
                   name: Define environment variable with lastest commit's message
                   command: |
@@ -111,14 +111,14 @@ jobs:
             - checkout
             - restore_cache:
                   keys:
-                      - v2-dependencies-{{ arch }}-{{ checksum "yarn.lock" }}
+                      - v3-dependencies-{{ arch }}-{{ checksum "yarn.lock" }}
             - run:
                   name: Installing Dependencies
-                  command: yarn
+                  command: yarn --frozen-lockfile --cache-folder ~/.cache/yarn
             - save_cache:
                   paths:
-                      - node_modules
-                  key: v2-dependencies-{{ arch }}-{{ checksum "yarn.lock" }}
+                      - ~/.cache/yarn
+                  key: v3-dependencies-{{ arch }}-{{ checksum "yarn.lock" }}
             - persist_to_workspace:
                   root: /
                   paths:
