@@ -98,12 +98,12 @@ export function SpectrumMixin<T extends Constructor<UpdatingElement>>(
                 if (dirParent === document.documentElement) {
                     observedForElements.add(this);
                 } else {
-                    const tagName = dirParent.tagName.toLocaleLowerCase();
+                    const { localName } = dirParent;
                     if (
-                        tagName.search('-') > -1 &&
-                        !customElements.get(tagName)
+                        localName.search('-') > -1 &&
+                        !customElements.get(localName)
                     ) {
-                        customElements.whenDefined(tagName).then(() => {
+                        customElements.whenDefined(localName).then(() => {
                             (dirParent as ThemeRoot).startManagingContentDirection(
                                 this
                             );
