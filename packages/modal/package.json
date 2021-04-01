@@ -24,7 +24,7 @@
     "module": "src/modal.css.js",
     "type": "module",
     "exports": {
-        ".": "./src/index.js",
+        ".": "./src/modal.css.js",
         "./src/*": "./src/*",
         "./package.json": "./package.json"
     },
