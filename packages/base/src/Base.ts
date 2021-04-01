@@ -98,17 +98,16 @@ export function SpectrumMixin<T extends Constructor<UpdatingElement>>(
                 if (dirParent === document.documentElement) {
                     observedForElements.add(this);
                 } else {
+                    const tagName = dirParent.tagName.toLocaleLowerCase();
                     if (
-                        dirParent.tagName.search('-') > -1 &&
-                        !customElements.get('dirParent.tagName')
+                        tagName.search('-') > -1 &&
+                        !customElements.get(tagName)
                     ) {
-                        customElements
-                            .whenDefined(dirParent.tagName)
-                            .then(() => {
-                                (dirParent as ThemeRoot).startManagingContentDirection(
-                                    this
-                                );
-                            });
+                        customElements.whenDefined(tagName).then(() => {
+                            (dirParent as ThemeRoot).startManagingContentDirection(
+                                this
+                            );
+                        });
                     } else {
                         (dirParent as ThemeRoot).startManagingContentDirection(
                             this
