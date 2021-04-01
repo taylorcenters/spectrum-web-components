@@ -31,6 +31,7 @@
         "./streaming-listener.js": "./src/streaming-listener.js",
         "./package.json": "./package.json"
     },
+    "sideEffects": false,
     "files": [
         "custom-elements.json",
         "*.d.ts",
@@ -38,7 +39,6 @@
         "*.js.map",
         "/src/"
     ],
-    "sideEffects": false,
     "scripts": {
         "test": "karma start --coverage"
     },
