@@ -52,6 +52,7 @@
     },
     "dependencies": {
         "@spectrum-web-components/base": "^0.4.2",
+        "@spectrum-web-components/icon": "^0.9.4",
         "@spectrum-web-components/icons-ui": "^0.6.4",
         "@spectrum-web-components/shared": "^0.12.1",
         "tslib": "^2.0.0"
