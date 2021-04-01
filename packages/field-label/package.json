@@ -48,10 +48,7 @@
     "author": "",
     "license": "Apache-2.0",
     "devDependencies": {
-        "@spectrum-css/fieldlabel": "^3.0.1",
-        "@spectrum-web-components/menu": "^0.8.2",
-        "@spectrum-web-components/picker": "^0.4.2",
-        "@spectrum-web-components/textfield": "^0.8.4"
+        "@spectrum-css/fieldlabel": "^3.0.1"
     },
     "dependencies": {
         "@spectrum-web-components/base": "^0.4.2",

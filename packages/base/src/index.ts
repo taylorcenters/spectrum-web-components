@@ -13,6 +13,8 @@ governing permissions and limitations under the License.
 export * from './Base.js';
 export * from './sizedMixin.js';
 export * from 'lit-element';
+import { css } from 'lit-element';
+export { css };
 export { nothing } from 'lit-html';
 export { ifDefined } from 'lit-html/directives/if-defined.js';
 export { repeat } from 'lit-html/directives/repeat.js';
