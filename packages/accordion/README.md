@@ -74,3 +74,8 @@ import { Accordion, AccordionItem } from '@spectrum-web-components/accordion';
     </sp-accordion-item>
 </sp-accordion>
 ```
+
+<script type="module">
+    import '@spectrum-web-components/accordion/sp-accordion.js';
+    import '@spectrum-web-components/accordion/sp-accordion-item.js';
+</script>

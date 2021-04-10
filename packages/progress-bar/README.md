@@ -151,3 +151,7 @@ A progress bar can be delivered with its labeling displayed above its visual ind
 ## Accessibility
 
 An `sp-progress-bar` element will register itself as a `role="progressbar"` element in the accessibility tree. Any value applied to the `label` attribute will be used both to visibly label the element and to set the `aria-label` attribute on the host. In cases where a visible label is not desired, be sure to include an `aria-label` attribute manually to ensure that the `sp-progress-bar` correctly fulfills its responsibilities to visitors of you site of all abilities.
+
+<script type="module">
+    import '@spectrum-web-components/progress-bar/sp-progress-bar.js';
+</script>

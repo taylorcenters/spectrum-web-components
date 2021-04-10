@@ -64,3 +64,8 @@ The quiet style works best when a clear layout (vertical stack, table, grid) ass
 <sp-field-label for="name-3">Name (quietly)</sp-field-label>
 <sp-textfield id="name-3" placeholder="Enter your name" quiet></sp-textfield>
 ```
+
+<script type="module">
+    import '@spectrum-web-components/field-label/sp-field-label.js';
+    import '@spectrum-web-components/textfield/sp-textfield.js';
+</script>

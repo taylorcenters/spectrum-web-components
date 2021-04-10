@@ -70,22 +70,28 @@ import { StatusLight } from '@spectrum-web-components/status-light';
 There are many variants to choose from in Spectrum. The `variant`
 attribute controls the main variant of the status light, and `neutral` being the default. Following are the supported variants:
 
--   positive
--   negative
--   notice
--   info
--   neutral
--   yellow
--   fuchsia
--   indigo
--   seafoam
--   chartreuse
--   magenta
--   celery
--   purple
+```html
+<sp-status-light variant="positive">Positive</sp-status-light>
+<sp-status-light variant="negative">Negative</sp-status-light>
+<sp-status-light variant="notice">Notice</sp-status-light>
+<sp-status-light variant="info">Info</sp-status-light>
+<sp-status-light variant="neutral">Neutral</sp-status-light>
+<sp-status-light variant="yellow">Yellow</sp-status-light>
+<sp-status-light variant="fuchsia">Fuchsia</sp-status-light>
+<sp-status-light variant="indigo">Indigo</sp-status-light>
+<sp-status-light variant="seafoam">Seafoam</sp-status-light>
+<sp-status-light variant="chartreuse">Chartreuse</sp-status-light>
+<sp-status-light variant="magenta">Magenta</sp-status-light>
+<sp-status-light variant="celery">Celery</sp-status-light>
+<sp-status-light variant="purple">Purple</sp-status-light>
+```
 
 ### Disabled
 
 ```html
 <sp-status-light variant="positive" disabled>disabled</sp-status-light>
 ```
+
+<script type="module">
+    import '@spectrum-web-components/status-light/sp-status-light.js';
+</script>

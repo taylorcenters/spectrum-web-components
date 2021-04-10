@@ -151,3 +151,11 @@ With the application of the `toggles` attribute, the button will self manage its
 ```html demo
 <sp-action-button toggles>Toggle button</sp-action-button>
 ```
+
+<script type="module">
+    import '@spectrum-web-components/action-button/sp-action-button.js';
+    import '@spectrum-web-components/action-group/sp-action-group.js';
+    import '@spectrum-web-components/icons-workflow/icons/sp-icon-edit.js';
+    import '@spectrum-web-components/overlay/overlay-trigger.js';
+    import '@spectrum-web-components/popover/sp-popover.js';
+</script>

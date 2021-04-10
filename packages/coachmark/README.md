@@ -39,3 +39,7 @@ import { Coachmark } from '@spectrum-web-components/coachmark';
 <sp-coachmark quiet variant="dark"></sp-coachmark>
 <sp-coachmark quiet variant="light"></sp-coachmark>
 ```
+
+<script type="module">
+    import '@spectrum-web-components/coachmark/sp-coachmark.js';
+</script>

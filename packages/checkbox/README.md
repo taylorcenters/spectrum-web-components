@@ -166,3 +166,8 @@ Event handlers for clicks and other user actions can be registered on an `<sp-ch
 
 Checkboxes are accessible by default, rendered in HTML using the `<input type="checkbox">` element. When the checkbox is set as `indeterminate` or
 `invalid`, the appropriate ARIA state attribute will automatically be applied.
+
+<script type="module">
+    import '@spectrum-web-components/checkbox/sp-checkbox.js';
+    import '@spectrum-web-components/field-group/sp-field-group.js';
+</script>

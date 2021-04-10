@@ -173,3 +173,10 @@ Use `side-aligned="end"` to display the `<sp-field-label>` inline and to align t
     <sp-menu-item>Tokyo</sp-menu-item>
 </sp-picker>
 ```
+
+<script type="module">
+    import '@spectrum-web-components/field-label/sp-field-label.js';
+    import '@spectrum-web-components/picker/sp-picker.js';
+    import '@spectrum-web-components/menu/sp-menu-item.js';
+    import '@spectrum-web-components/textfield/sp-textfield.js';
+</script>

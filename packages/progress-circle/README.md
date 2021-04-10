@@ -111,3 +111,7 @@ Progress Circles come in 3 sizes: small (`[size="small"]`), medium (default), or
 ## Accessibility
 
 An `sp-progress-circle` element will register itself as a `role="progressbar"` element in the accessibility tree. Any value applied to the `label` attribute will be set as the `aria-label` attribute on the host. These two attributes can be used interchangably to ensure that the `sp-progress-circle` elements in your UI correctly fulfills its responsibilities to visitors of you site of all abilities.
+
+<script type="module">
+    import '@spectrum-web-components/progress-circle/sp-progress-circle.js';
+</script>

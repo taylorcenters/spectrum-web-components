@@ -29,3 +29,7 @@ import { ColorLoupe } from '@spectrum-web-components/color-loupe';
 ```html
 <sp-color-loupe open style="position: relative"></sp-color-loupe>
 ```
+
+<script type="module">
+    import '@spectrum-web-components/color-loupe/sp-color-loupe.js';
+</script>

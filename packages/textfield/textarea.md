@@ -119,3 +119,8 @@ Note: When leveraging the `quiet` attribute, the `grows` attribute does not effe
     </div>
 </div>
 ```
+
+<script type="module">
+    import '@spectrum-web-components/field-label/sp-field-label.js';
+    import '@spectrum-web-components/textfield/sp-textfield.js';
+</script>

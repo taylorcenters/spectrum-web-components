@@ -216,20 +216,10 @@ A `horizontal` card:
     style="color: var(--spectrum-body-text-color, var(--spectrum-alias-text-color));"
 >
     <sp-card small horizontal heading="Card Heading" subheading="JPG Photo">
-        <sp-icon slot="preview" style="width: 36px; height: 36px;">
-            <svg
-                xmlns="http://www.w3.org/2000/svg"
-                viewBox="0 0 36 36"
-                aria-hidden="true"
-                role="img"
-                fill="currentColor"
-            >
-                <path d="M20 2v10h10L20 2z" />
-                <path
-                    d="M19 14a1 1 0 01-1-1V2H7a1 1 0 00-1 1v30a1 1 0 001 1h22a1 1 0 001-1V14zm7 15.5a.5.5 0 01-.5.5h-15a.5.5 0 01-.5-.5v-1a.5.5 0 01.5-.5h15a.5.5 0 01.5.5zm0-4a.5.5 0 01-.5.5h-15a.5.5 0 01-.5-.5v-1a.5.5 0 01.5-.5h15a.5.5 0 01.5.5zm0-4a.5.5 0 01-.5.5h-15a.5.5 0 01-.5-.5v-1a.5.5 0 01.5-.5h15a.5.5 0 01.5.5z"
-                />
-            </svg>
-        </sp-icon>
+        <sp-icon-file-txt
+            slot="preview"
+            style="width: 36px; height: 36px;"
+        ></sp-icon-file-txt>
     </sp-card>
 </div>
 ```
@@ -260,3 +250,11 @@ Or a `quiet` card:
     </sp-card>
 </div>
 ```
+
+<script type="module">
+    import '@spectrum-web-components/action-menu/sp-action-menu.js';
+    import '@spectrum-web-components/card/sp-card.js';
+    import '@spectrum-web-components/icons-workflow/icons/sp-icon-file-txt.js';
+    import '@spectrum-web-components/menu/sp-menu-item.js';
+    import '@spectrum-web-components/menu/sp-menu-divider.js';
+</script>

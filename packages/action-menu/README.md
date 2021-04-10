@@ -87,35 +87,27 @@ The visible label that is be provided via the default `<slot>` interface can be 
 
 A custom icon can be supplied via the `icon` slot in order to replace the default meatballs icon.
 
-<sp-icons-medium></sp-icons-medium>
-
-<!-- prettier-ignore -->
 ```html
 <sp-action-menu>
     <sp-icon-settings slot="icon"></sp-icon-settings>
     <span slot="label">Actions under the gear</span>
-    <sp-menu-item>
-        Deselect
-    </sp-menu-item>
-    <sp-menu-item>
-        Select inverse
-    </sp-menu-item>
-    <sp-menu-item>
-        Feather...
-    </sp-menu-item>
-    <sp-menu-item>
-        Select and mask...
-    </sp-menu-item>
+    <sp-menu-item>Deselect</sp-menu-item>
+    <sp-menu-item>Select inverse</sp-menu-item>
+    <sp-menu-item>Feather...</sp-menu-item>
+    <sp-menu-item>Select and mask...</sp-menu-item>
     <sp-menu-divider></sp-menu-divider>
-    <sp-menu-item>
-        Save selection
-    </sp-menu-item>
-    <sp-menu-item disabled>
-        Make work path
-    </sp-menu-item>
+    <sp-menu-item>Save selection</sp-menu-item>
+    <sp-menu-item disabled>Make work path</sp-menu-item>
 </sp-action-menu>
 ```
 
 ## Accessibility
 
 An `<sp-action-menu>` parent will ensure that the internal `<sp-menu>` features a role of `listbox` and contains children with the role `option`. Upon focusing the `<sp-action-menu>` using `ArrowDown` will also open the menu while throwing focus into first selected (or unselected when none are selected) menu item to assist in selecting of a new value.
+
+<script type="module">
+    import '@spectrum-web-components/action-menu/sp-action-menu.js';
+    import '@spectrum-web-components/icons-workflow/icons/sp-icon-settings.js';
+    import '@spectrum-web-components/menu/sp-menu-divider.js';
+    import '@spectrum-web-components/menu/sp-menu-item.js';
+</script>

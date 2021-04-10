@@ -59,3 +59,11 @@ When the buttons have text only, be sure to include the `text-only` attribute to
     </sp-quick-actions>
 </div>
 ```
+
+<script type="module">
+    import '@spectrum-web-components/action-button/sp-action-button.js';
+    import '@spectrum-web-components/icons-workflow/icons/sp-icon-info.js';
+    import '@spectrum-web-components/icons-workflow/icons/sp-icon-magnify.js';
+    import '@spectrum-web-components/icons-workflow/icons/sp-icon-star.js';
+    import '@spectrum-web-components/quick-actions/sp-quick-actions.js';
+</script>

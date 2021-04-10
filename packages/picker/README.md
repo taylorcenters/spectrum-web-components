@@ -300,3 +300,10 @@ When the `value` of an `<sp-picker>` matches the `value` attribute or the trimme
 ## Accessibility
 
 To render accessibly, an `<sp-picker>` element should be paired with an `<sp-field-label>` element that has a `for` attribute referencing the `id` of the `<sp-picker>` element.
+
+<script type="module">
+    import '@spectrum-web-components/field-label/sp-field-label.js';
+    import '@spectrum-web-components/menu/sp-menu-divider.js';
+    import '@spectrum-web-components/menu/sp-menu-item.js';
+    import '@spectrum-web-components/picker/sp-picker.js';
+</script>

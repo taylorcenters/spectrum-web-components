@@ -103,7 +103,6 @@ will send the user to the location of the item.
 ## Icon
 
 ```html
-<sp-icons-medium></sp-icons-medium>
 <sp-sidenav>
     <sp-sidenav-item value="Section Title 1" label="Section Title 1">
         <sp-icon-star slot="icon"></sp-icon-star>
@@ -137,3 +136,10 @@ will send the user to the location of the item.
 ## Accessibility
 
 When the `manage-tab-index` attribute is set on an `sp-sidenav` element then it will presents its child `sp-sidenav-item` children with a single tab-stop. This will leave items beyond the selected item, or first when there is no focusable selected item, will be accessibile via the up and down arrow keys.
+
+<script type="module">
+    import '@spectrum-web-components/icons-workflow/icons/sp-icon-star.js';
+    import '@spectrum-web-components/sidenav/sp-sidenav.js';
+    import '@spectrum-web-components/sidenav/sp-sidenav-heading.js';
+    import '@spectrum-web-components/sidenav/sp-sidenav-item.js';
+</script>

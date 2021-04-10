@@ -100,3 +100,9 @@ import { Dropzone } from '@spectrum-web-components/dropzone';
     </div>
 </sp-dropzone>
 ```
+
+<script type="module">
+    import '@spectrum-web-components/dropzone/sp-dropzone.js';
+    import '@spectrum-web-components/illustrated-message/sp-illustrated-message.js';
+    import '@spectrum-web-components/link/sp-link.js';
+</script>

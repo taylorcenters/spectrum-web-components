@@ -75,3 +75,7 @@ In addition to the variant, banners can be placed in the top-right corner of its
 ## Accessibility
 
 A Banner does not have a default semantic role communicated to assistive technology, but it does accept id, role and other aria- props that can be added to to improve accessibility depending on context.
+
+<script type="module">
+    import '@spectrum-web-components/banner/sp-banner.js';
+</script>

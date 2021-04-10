@@ -242,3 +242,9 @@ An `<sp-action-group selects="multiple">` will manage its `<sp-action-button>` c
     </sp-action-button>
 </sp-action-group>
 ```
+
+<script type="module">
+    import '@spectrum-web-components/action-button/sp-action-button.js';
+    import '@spectrum-web-components/action-group/sp-action-group.js';
+    import '@spectrum-web-components/icons-workflow/icons/sp-icon-magnify.js';
+</script>

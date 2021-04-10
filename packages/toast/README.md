@@ -85,3 +85,7 @@ import { Toast } from '@spectrum-web-components/toast';
 ## Accessibility
 
 An `<sp-toast>` element is by default rendered with a `role` of `alert`. When rendering the `<sp-toast>` to a page, it should be place in a container with a `role` of `region`.
+
+<script type="module">
+    import '@spectrum-web-components/toast/sp-toast.js';
+</script>

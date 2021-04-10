@@ -162,3 +162,8 @@ When using the `more` value of the `type` attribute, an `<sp-split-button>` will
     <sp-menu-item>Option Extended</sp-menu-item>
 </sp-split-button>
 ```
+
+<script type="module">
+    import '@spectrum-web-components/split-button/sp-split-button.js';
+    import '@spectrum-web-components/menu/sp-menu-item.js';
+</script>

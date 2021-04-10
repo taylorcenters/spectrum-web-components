@@ -99,3 +99,9 @@ This is the negative a.k.a. error variant of Tooltip
     Lorem ipsum dolor sit amet, consectetur adipiscing elit
 </sp-tooltip>
 ```
+
+<script type="module">
+    import '@spectrum-web-components/icons-workflow/icons/sp-icon-alert.js';
+    import '@spectrum-web-components/icons-workflow/icons/sp-icon-checkmark-circle.js';
+    import '@spectrum-web-components/tooltip/sp-tooltip.js';
+</script>

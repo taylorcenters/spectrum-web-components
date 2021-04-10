@@ -44,3 +44,7 @@ When the `<sp-color-handle>` uses the `open` property, the `<sp-color-loupe>` co
 <div style="height: var(--spectrum-global-dimension-size-900)"></div>
 <sp-color-handle open></sp-color-handle>
 ```
+
+<script type="module">
+    import '@spectrum-web-components/color-handle/sp-color-handle.js';
+</script>

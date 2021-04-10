@@ -11,28 +11,21 @@ governing permissions and limitations under the License.
 */
 
 import './router.js';
-import { Overlay } from '@spectrum-web-components/overlay';
-import '@spectrum-web-components/bundle/elements.js';
-import '@spectrum-web-components/top-nav/sp-top-nav.js';
-import '@spectrum-web-components/top-nav/sp-top-nav-item.js';
-import '@spectrum-web-components/icons-workflow/icons/sp-icon-magnify.js';
-import '@spectrum-web-components/icons-workflow/icons/sp-icon-help.js';
-import '@spectrum-web-components/icons-workflow/icons/sp-icon-info.js';
-import '@spectrum-web-components/icons-workflow/icons/sp-icon-star.js';
-import '@spectrum-web-components/icons-workflow/icons/sp-icon-chevron-down.js';
-import '@spectrum-web-components/icons-workflow/icons/sp-icon-close.js';
-import '@spectrum-web-components/icons-workflow/icons/sp-icon-info.js';
-import '@spectrum-web-components/icons-workflow/icons/sp-icon-checkmark.js';
-import '@spectrum-web-components/icons-workflow/icons/sp-icon-checkmark-circle.js';
-import '@spectrum-web-components/icons-workflow/icons/sp-icon-alert.js';
-import '@spectrum-web-components/icons-workflow/icons/sp-icon-edit.js';
-import '@spectrum-web-components/icons-workflow/icons/sp-icon-more.js';
-import '@spectrum-web-components/icons-workflow/icons/sp-icon-settings.js';
-
-declare global {
-    interface Window {
-        Overlay: typeof Overlay;
-    }
-}
-
-window.Overlay = Overlay;
+import '@spectrum-web-components/tabs/sp-tabs.js';
+import '@spectrum-web-components/tabs/sp-tab.js';
+// import '@spectrum-web-components/bundle/elements.js';
+// import '@spectrum-web-components/top-nav/sp-top-nav.js';
+// import '@spectrum-web-components/top-nav/sp-top-nav-item.js';
+// import '@spectrum-web-components/icons-workflow/icons/sp-icon-magnify.js';
+// import '@spectrum-web-components/icons-workflow/icons/sp-icon-help.js';
+// import '@spectrum-web-components/icons-workflow/icons/sp-icon-info.js';
+// import '@spectrum-web-components/icons-workflow/icons/sp-icon-star.js';
+// import '@spectrum-web-components/icons-workflow/icons/sp-icon-chevron-down.js';
+// import '@spectrum-web-components/icons-workflow/icons/sp-icon-close.js';
+// import '@spectrum-web-components/icons-workflow/icons/sp-icon-info.js';
+// import '@spectrum-web-components/icons-workflow/icons/sp-icon-checkmark.js';
+// import '@spectrum-web-components/icons-workflow/icons/sp-icon-checkmark-circle.js';
+// import '@spectrum-web-components/icons-workflow/icons/sp-icon-alert.js';
+// import '@spectrum-web-components/icons-workflow/icons/sp-icon-edit.js';
+// import '@spectrum-web-components/icons-workflow/icons/sp-icon-more.js';
+// import '@spectrum-web-components/icons-workflow/icons/sp-icon-settings.js';

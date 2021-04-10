@@ -134,3 +134,8 @@ Event handlers for clicks and other user actions can be registered on an `<sp-ra
 ## Accessibility
 
 Radio buttons are accessible by default, rendered in HTML using the `<input type="radio">` element. Tabbing into a group of radio buttons places the focus on the first radio button selected. If none of the radio buttons are selected, the focus is set on the first one in the group. Space selects the radio button in focus (if not already selected). Using the arrow keys moves focus and selection to the previous or next radio button in the group (last becomes first, and first becomes last). The new radio button in focus gets selected even if the previous one was not.
+
+<script type="module">
+    import '@spectrum-web-components/radio/sp-radio.js';
+    import '@spectrum-web-components/radio/sp-radio-group.js';
+</script>

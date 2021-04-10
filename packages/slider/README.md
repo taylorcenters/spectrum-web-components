@@ -108,3 +108,7 @@ const startListener = ({ target }) => {
 
 slider.addEventListener('input', startListener);
 ```
+
+<script type="module">
+    import '@spectrum-web-components/slider/sp-slider.js';
+</script>

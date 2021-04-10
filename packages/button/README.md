@@ -103,7 +103,6 @@ placing an icon component to the `icon` slot. The icon may be an `sp-icon` or an
 SVG.
 
 ```html
-<sp-icons-medium></sp-icons-medium>
 <sp-button-group>
     <sp-button variant="primary">Label only</sp-button>
     <sp-button variant="primary">
@@ -159,3 +158,9 @@ popover or dialog opens.
 ```html
 <sp-button autofocus>Confirm</sp-button>
 ```
+
+<script type="module">
+    import '@spectrum-web-components/button/sp-button.js';
+    import '@spectrum-web-components/button-group/sp-button-group.js';
+    import '@spectrum-web-components/icons-workflow/icons/sp-icon-help.js';
+</script>

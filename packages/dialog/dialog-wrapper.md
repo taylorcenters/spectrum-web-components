@@ -129,3 +129,9 @@ import { DialogWrapper } from '@spectrum-web-components/dialog';
     </sp-button>
 </overlay-trigger>
 ```
+
+<script type="module">
+    import '@spectrum-web-components/button/sp-button.js';
+    import '@spectrum-web-components/dialog/sp-dialog-wrapper.js';
+    import '@spectrum-web-components/overlay/overlay-trigger.js';
+</script>

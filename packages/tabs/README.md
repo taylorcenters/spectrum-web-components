@@ -99,3 +99,12 @@ import {
 ## Accessibility
 
 When an `<sp-tabs>` has a `selected` value, the `<sp-tab>` child of that `value` will be given `[tabindex="0"]` and will receive initial focus when tabbing into the `<sp-tabs>` element. When no `selected` value is present, the first `<sp-tab>` child will be treated in this way. When focus is currently within the `<sp-tabs>` element, the left and right arrows will move that focus back and forth through the available `<sp-tab>` children.
+
+<script type="module">
+    import '@spectrum-web-components/icons-workflow/icons/sp-icon-checkmark.js';
+    import '@spectrum-web-components/icons-workflow/icons/sp-icon-close.js';
+    import '@spectrum-web-components/icons-workflow/icons/sp-icon-chevron-down.js';
+    import '@spectrum-web-components/icons-workflow/icons/sp-icon-help.js';
+    import '@spectrum-web-components/tabs/sp-tab.js';
+    import '@spectrum-web-components/tabs/sp-tabs.js';
+</script>

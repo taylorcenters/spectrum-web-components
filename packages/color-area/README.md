@@ -66,3 +66,7 @@ An `<sp-color-area>`’s height and width can be customized appropriately for it
         height: var(--spectrum-global-dimension-size-900)"
 ></sp-color-area>
 ```
+
+<script type="module">
+    import '@spectrum-web-components/color-area/sp-color-area.js';
+</script>

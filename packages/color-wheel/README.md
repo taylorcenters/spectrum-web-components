@@ -62,3 +62,7 @@ An `<sp-color-wheel>`’s size can be customized appropriately for its context. 
 ```html
 <sp-color-wheel style="width: 300px; height: 300px;"></sp-color-wheel>
 ```
+
+<script type="module">
+    import '@spectrum-web-components/color-wheel/sp-color-wheel.js';
+</script>

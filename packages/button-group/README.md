@@ -43,3 +43,8 @@ import { ButtonGroup } from '@spectrum-web-components/button-group';
     <sp-button>Short 3</sp-button>
 </sp-button-group>
 ```
+
+<script type="module">
+    import '@spectrum-web-components/button/sp-button.js';
+    import '@spectrum-web-components/button-group/sp-button-group.js';
+</script>

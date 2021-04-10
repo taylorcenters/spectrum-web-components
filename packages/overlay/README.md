@@ -187,3 +187,10 @@ const closeOverlay = function () {
     innerContentParent.replaceChild(placeholder, innerContent);
 };
 ```
+
+<script type="module">
+    import '@spectrum-web-components/button/sp-button.js';
+    import '@spectrum-web-components/dialog/sp-dialog.js';
+    import { Overlay } from '@spectrum-web-components/overlay';
+    window.Overlay = Overlay;
+</script>

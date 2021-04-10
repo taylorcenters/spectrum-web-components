@@ -100,3 +100,7 @@ When a vertical Divider is used inside of a flex container, use `align-self: str
     </sp-action-button>
 </div>
 ```
+
+<script type="module">
+    import '@spectrum-web-components/divider/sp-divider.js';
+</script>

@@ -33,3 +33,7 @@ import { Avatar } from '@spectrum-web-components/avatar';
 ## Accessibility
 
 The `label` attribute of the `<sp-avatar>` will be passed into the `<img>` element as the `alt` tag for use in defining a textual representation of the image displayed.
+
+<script type="module">
+    import '@spectrum-web-components/avatar/sp-avatar.js';
+</script>

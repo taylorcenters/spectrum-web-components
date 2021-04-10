@@ -271,3 +271,7 @@ Popovers with padding, ideal for dialogs.
     </sp-popover>
 </div>
 ```
+
+<script type="module">
+    import '@spectrum-web-components/popover/sp-popover.js';
+</script>

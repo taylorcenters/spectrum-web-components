@@ -22,3 +22,7 @@ When looking to leverage the `Underlay` base class as a type and/or for extensio
 ```
 import { Underlay } from '@spectrum-web-components/underlay';
 ```
+
+<script type="module">
+    import '@spectrum-web-components/underlay/sp-underlay.js';
+</script>

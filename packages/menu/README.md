@@ -74,3 +74,9 @@ import {
 ## Accessibility
 
 `<sp-menu>`, `<sp-menu-group>`, and `<sp-menu-item>` each deliver a different part of the wai-aria "menu" pattern and support the `menu`, `group`, and `menuitem` roles respectively. To support ease of keyboard navigation, only the first active _or_ first selected `<sp-menu-item>` can be accessed in the tab order. Once the focus has entered the menu the up and down arrow keys can be used to access the rest of the menu.
+
+<script type="module">
+    import '@spectrum-web-components/menu/sp-menu.js';
+    import '@spectrum-web-components/menu/sp-menu-item.js';
+    import '@spectrum-web-components/popover/sp-popover.js';
+</script>

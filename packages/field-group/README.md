@@ -46,3 +46,8 @@ import { FieldGroup } from '@spectrum-web-components/field-group';
     <sp-checkbox checked>Checkbox 5</sp-checkbox>
 </sp-field-group>
 ```
+
+<script type="module">
+    import '@spectrum-web-components/checkbox/sp-checkbox.js';
+    import '@spectrum-web-components/field-group/sp-field-group.js';
+</script>

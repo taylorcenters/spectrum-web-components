@@ -141,3 +141,7 @@ Note: the `dissmissable` attribute will not be followed when `mode="fullscreen"`
     dignissim cras lobortis.
 </sp-dialog>
 ```
+
+<script type="module">
+    import '@spectrum-web-components/dialog/sp-dialog.js';
+</script>

@@ -140,3 +140,7 @@ The `cover` attribute will cause the content to fill the space provided by the `
     </sp-thumbnail>
 </div>
 ```
+
+<script type="module">
+    import '@spectrum-web-components/thumbnail/sp-thumbnail.js';
+</script>

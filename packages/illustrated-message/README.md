@@ -74,3 +74,7 @@ In this variant, the description text is not italisized.
 ## Content
 
 The popover accepts an svg into its default slot. This svg is displayed as an illustration above the heading and description
+
+<script type="module">
+    import '@spectrum-web-components/illustrated-message/sp-illustrated-message.js';
+</script>

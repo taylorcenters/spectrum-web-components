@@ -258,3 +258,12 @@ previewing or editing content that will be displayed in a light theme with a rig
     </div>
 </sp-theme>
 ```
+
+<script type="module">
+    import '@spectrum-web-components/button/sp-button.js';
+    import '@spectrum-web-components/button-group/sp-button-group.js';
+    import '@spectrum-web-components/slider/sp-slider.js';
+    import '@spectrum-web-components/switch/sp-switch.js';
+    import '@spectrum-web-components/theme/sp-theme.js';
+    import '@spectrum-web-components/theme/src/themes.js';
+</script>

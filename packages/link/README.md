@@ -124,3 +124,7 @@ This is a <sp-link download="myfile.txt" href="#">download link</sp-link>.
 ## Accessibility
 
 Links are accessible by default, rendered in HTML using the `<a>` element. The correct aria roles will automatically be applied.
+
+<script type="module">
+    import '@spectrum-web-components/link/sp-link.js';
+</script>

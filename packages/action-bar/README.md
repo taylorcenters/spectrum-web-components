@@ -84,3 +84,11 @@ When using `[variant="sticky"]`, be sure you've spent some time touching up on [
     </sp-button>
 </section>
 ```
+
+<script type="module">
+    import '@spectrum-web-components/action-bar/sp-action-bar.js';
+    import '@spectrum-web-components/button/sp-button.js';
+    import '@spectrum-web-components/checkbox/sp-checkbox.js';
+    import '@spectrum-web-components/icons-workflow/icons/sp-icon-edit.js';
+    import '@spectrum-web-components/icons-workflow/icons/sp-icon-more.js';
+</script>

@@ -182,3 +182,7 @@ import { SplitView } from '@spectrum-web-components/split-view';
     </div>
 </sp-split-view>
 ```
+
+<script type="module">
+    import '@spectrum-web-components/split-view/sp-split-view.js';
+</script>

@@ -133,6 +133,7 @@ module.exports = async () => {
     mpaConfig.plugins.unshift(minifyHTML());
     mpaConfig.plugins.push(json());
     mpaConfig.preserveEntrySignatures = false;
+    mpaConfig.preserveModules = false;
 
     mpaConfig.plugins.push(
         styles({

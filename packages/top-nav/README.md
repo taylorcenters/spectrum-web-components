@@ -51,3 +51,11 @@ import { TopNav, TopNavItem } from '@spectrum-web-components/top-nav';
     </sp-action-menu>
 </sp-top-nav>
 ```
+
+<script type="module">
+    import '@spectrum-web-components/action-menu/sp-action-menu.js';
+    import '@spectrum-web-components/menu/sp-menu-divider.js';
+    import '@spectrum-web-components/menu/sp-menu-item.js';
+    import '@spectrum-web-components/top-nav/sp-top-nav.js';
+    import '@spectrum-web-components/top-nav/sp-top-nav-item.js';
+</script>

@@ -56,3 +56,7 @@ When using the HSL or HSV formats, and a color's value (in HSV) is set to 0, or 
 ```html
 <sp-color-slider disabled></sp-color-slider>
 ```
+
+<script type="module">
+    import '@spectrum-web-components/color-slider/sp-color-slider.js';
+</script>

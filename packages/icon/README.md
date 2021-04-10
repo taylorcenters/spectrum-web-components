@@ -145,3 +145,8 @@ Icons can also be supplied as HTML elements to be applied via the default `<slot
 ```html
 <sp-icon name="ui:Arrow100" label="Arrow pointing to the right"></sp-icon>
 ```
+
+<script type="module">
+    import '@spectrum-web-components/icon/sp-icon.js';
+    import '@spectrum-web-components/icon/sp-icons-medium.js';
+</script>

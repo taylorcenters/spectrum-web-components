@@ -43,3 +43,7 @@ import { Search } from '@spectrum-web-components/search';
 ## Events
 
 The `submit` event fires when the `<sp-search>` is submitted. This is a non-`composed` event inline with what you would expect a [`<form />`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLFormElement/submit_event){:target="\_blank"} to fire. If you choose to prevent the default of this event, the default action for the underlying `<form />` element will also be prevented, which will allow you to handle the search action in javascript.
+
+<script type="module">
+    import '@spectrum-web-components/search/sp-search.js';
+</script>

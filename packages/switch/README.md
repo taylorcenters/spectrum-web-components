@@ -97,3 +97,8 @@ Event handlers for clicks and other user actions can be registered on an `<sp-sw
 ## Accessibility
 
 Switch are accessible by default, rendered in HTML using the `<input type="checkbox">` element with the appropriate accessibility role, `switch`. When the Switch is `checked` or `invalid`, the appropriate ARIA state attribute will automatically be applied.
+
+<script type="module">
+    import '@spectrum-web-components/field-group/sp-field-group.js';
+    import '@spectrum-web-components/switch/sp-switch.js';
+</script>

@@ -141,3 +141,9 @@ Use the `deletable` attribute to signify `sp-tags` elements that can be removed.
     </sp-tag>
 </sp-tags>
 ```
+
+<script type="module">
+    import '@spectrum-web-components/icons-workflow/icons/sp-icon-magnify.js';
+    import '@spectrum-web-components/tags/sp-tag.js';
+    import '@spectrum-web-components/tags/sp-tags.js';
+</script>
