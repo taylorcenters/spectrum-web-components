@@ -23,6 +23,14 @@ function hasModifier(event: MouseEvent): boolean {
     return !!(event.metaKey || event.altKey || event.ctrlKey || event.shiftKey);
 }
 
+interface ManagedOverlayContent {
+    open: boolean;
+    overlayWillOpenCallback?: (args: { trigger: HTMLElement }) => void;
+    overlayOpenCallback?: (args: { trigger: HTMLElement }) => void;
+    overlayOpenCancelledCallback?: (args: { trigger: HTMLElement }) => void;
+    overlayCloseCallback?: (args: { trigger: HTMLElement }) => void;
+}
+
 export class OverlayStack {
     public overlays: ActiveOverlay[] = [];
 
@@ -152,9 +160,7 @@ export class OverlayStack {
 
     private isClickOverlayActiveForTrigger(trigger: HTMLElement): boolean {
         return this.overlays.some(
-            (item) =>
-                trigger === item.trigger &&
-                item.interaction === 'click'
+            (item) => trigger === item.trigger && item.interaction === 'click'
         );
     }
 
@@ -169,11 +175,27 @@ export class OverlayStack {
             this.startTabTrapping();
         }
 
+        const contentWithOpen = (details.content as unknown) as ManagedOverlayContent;
+        if (contentWithOpen.overlayWillOpenCallback) {
+            const { trigger } = details;
+            contentWithOpen.overlayWillOpenCallback({ trigger });
+        }
+
         if (details.delayed) {
-            const promise = this.overlayTimer.openTimer(details.content);
-            const cancelled = await promise;
+            const cancelledPromise = this.overlayTimer.openTimer(
+                details.content
+            );
+            const promises = [cancelledPromise];
+            if (details.abortPromise) {
+                promises.push(details.abortPromise);
+            }
+            const cancelled = await Promise.race(promises);
             if (cancelled) {
-                return promise;
+                if (contentWithOpen.overlayOpenCancelledCallback) {
+                    const { trigger } = details;
+                    contentWithOpen.overlayOpenCancelledCallback({ trigger });
+                }
+                return cancelled;
             }
         }
 
@@ -206,11 +228,13 @@ export class OverlayStack {
                 this.overlays.push(activeOverlay);
                 await activeOverlay.updateComplete;
                 this.addOverlayEventListeners(activeOverlay);
-                const contentWithOpen = (activeOverlay.overlayContent as unknown) as {
-                    open: boolean;
-                };
+                const contentWithOpen = (activeOverlay.overlayContent as unknown) as ManagedOverlayContent;
                 if (typeof contentWithOpen.open !== 'undefined') {
                     contentWithOpen.open = true;
+                }
+                if (contentWithOpen.overlayOpenCallback) {
+                    const { trigger } = activeOverlay;
+                    contentWithOpen.overlayOpenCallback({ trigger });
                 }
                 if (details.receivesFocus === 'auto') {
                     activeOverlay.focus();
@@ -337,11 +361,13 @@ export class OverlayStack {
     ): Promise<void> {
         if (overlay) {
             await overlay.hide(animated);
-            const contentWithOpen = (overlay.overlayContent as unknown) as {
-                open: boolean;
-            };
+            const contentWithOpen = (overlay.overlayContent as unknown) as ManagedOverlayContent;
             if (typeof contentWithOpen.open !== 'undefined') {
                 contentWithOpen.open = false;
+            }
+            if (contentWithOpen.overlayCloseCallback) {
+                const { trigger } = overlay;
+                contentWithOpen.overlayCloseCallback({ trigger });
             }
             if (overlay.state != 'dispose') return;
 
