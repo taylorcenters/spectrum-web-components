@@ -13,29 +13,19 @@ governing permissions and limitations under the License.
 import {
     html,
     property,
-    CSSResultArray,
     TemplateResult,
     query,
-    PropertyValues,
     styleMap,
     ifDefined,
 } from '@spectrum-web-components/base';
+import { SliderBase } from './SliderBase';
 import { streamingListener } from '@spectrum-web-components/base/src/streaming-listener.js';
 
-import sliderStyles from './slider.css.js';
-import { Focusable } from '@spectrum-web-components/shared/src/focusable.js';
 import { StyleInfo } from 'lit-html/directives/style-map';
 
 export const variants = ['filled', 'ramp', 'range', 'tick'];
 
-export class Slider extends Focusable {
-    public static get styles(): CSSResultArray {
-        return [sliderStyles];
-    }
-
-    @property()
-    public type = '';
-
+export class Slider extends SliderBase {
     @property({ type: Number, reflect: true })
     public get value(): number {
         return this._value;
@@ -85,42 +75,12 @@ export class Slider extends Focusable {
     public getAriaValueText: (value: number) => string = (value) => `${value}`;
 
     @property({ attribute: false })
-    private get ariaValueText(): string {
+    protected get ariaValueText(): string {
         if (!this.getAriaValueText) {
             return `${this.value}`;
         }
         return this.getAriaValueText(this.value);
     }
-
-    @property()
-    public label = '';
-
-    @property({ reflect: true, attribute: 'aria-label' })
-    public ariaLabel?: string;
-
-    @property({ type: Number })
-    public max = 100;
-
-    @property({ type: Number })
-    public min = 0;
-
-    @property({ type: Number })
-    public step = 1;
-
-    @property({ type: Number, attribute: 'tick-step' })
-    public tickStep = 0;
-
-    @property({ type: Boolean, attribute: 'tick-labels' })
-    public tickLabels = false;
-
-    @property({ type: Boolean, reflect: true })
-    public disabled = false;
-
-    @property({ type: Boolean, reflect: true })
-    public dragging = false;
-
-    @property({ type: Boolean, reflect: true, attribute: 'handle-highlight' })
-    public handleHighlight = false;
 
     @query('#handle')
     private handle!: HTMLDivElement;
@@ -128,36 +88,8 @@ export class Slider extends Focusable {
     @query('#input')
     private input!: HTMLInputElement;
 
-    @query('#label')
-    private labelEl!: HTMLLabelElement;
-
-    private boundingClientRect?: DOMRect;
-
     public get focusElement(): HTMLElement {
         return this.input;
-    }
-
-    protected render(): TemplateResult {
-        return html`
-            ${this.renderLabel()} ${this.renderTrack()}
-        `;
-    }
-
-    protected updated(changedProperties: PropertyValues): void {
-        if (changedProperties.has('value')) {
-            this.dispatchInputEvent();
-        }
-    }
-
-    private renderLabel(): TemplateResult {
-        return html`
-            <div id="labelContainer">
-                <label id="label" for="input"><slot>${this.label}</slot></label>
-                <output id="value" aria-live="off" for="input">
-                    ${this.ariaValueText}
-                </output>
-            </div>
-        `;
     }
 
     private renderTrackLeft(): TemplateResult {
@@ -243,7 +175,7 @@ export class Slider extends Focusable {
         `;
     }
 
-    private renderHandle(): TemplateResult {
+    protected renderHandle(): TemplateResult {
         return html`
             <div
                 id="handle"
@@ -277,7 +209,7 @@ export class Slider extends Focusable {
         `;
     }
 
-    private renderTrack(): TemplateResult {
+    protected renderTrack(): TemplateResult {
         return html`
             <div @pointerdown=${this.handleTrackPointerdown}>
                 <div id="controls">
@@ -289,7 +221,7 @@ export class Slider extends Focusable {
         `;
     }
 
-    private handlePointerdown(event: PointerEvent): void {
+    protected handlePointerdown(event: PointerEvent): void {
         if (this.disabled || event.button !== 0) {
             event.preventDefault();
             return;
@@ -300,7 +232,7 @@ export class Slider extends Focusable {
         this.handle.setPointerCapture(event.pointerId);
     }
 
-    private handlePointerup(event: PointerEvent): void {
+    protected handlePointerup(event: PointerEvent): void {
         // Retain focus on input element after mouse up to enable keyboard interactions
         this.labelEl.click();
         this.handleHighlight = false;
@@ -309,7 +241,7 @@ export class Slider extends Focusable {
         this.dispatchChangeEvent();
     }
 
-    private handlePointermove(event: PointerEvent): void {
+    protected handlePointermove(event: PointerEvent): void {
         if (!this.dragging) {
             return;
         }
@@ -320,7 +252,7 @@ export class Slider extends Focusable {
      * Move the handle under the cursor and begin start a pointer capture when the track
      * is moused down
      */
-    private handleTrackPointerdown(event: PointerEvent): void {
+    protected handleTrackPointerdown(event: PointerEvent): void {
         if (
             event.target === this.handle ||
             this.disabled ||
@@ -347,14 +279,14 @@ export class Slider extends Focusable {
     /**
      * Keep the slider value property in sync with the input element's value
      */
-    private onInputChange(): void {
+    protected onInputChange(): void {
         const inputValue = parseFloat(this.input.value);
         this.value = inputValue;
 
         this.dispatchChangeEvent();
     }
 
-    private onInputFocus(): void {
+    protected onInputFocus(): void {
         let isFocusVisible;
         try {
             isFocusVisible =
@@ -366,7 +298,7 @@ export class Slider extends Focusable {
         this.handleHighlight = isFocusVisible;
     }
 
-    private onInputBlur(): void {
+    protected onInputBlur(): void {
         this.handleHighlight = false;
     }
 
@@ -390,27 +322,9 @@ export class Slider extends Focusable {
         return this.isLTR ? value : this.max - value;
     }
 
-    private dispatchInputEvent(): void {
-        if (!this.dragging) {
-            return;
-        }
-        const inputEvent = new Event('input', {
-            bubbles: true,
-            composed: true,
-        });
-
-        this.dispatchEvent(inputEvent);
-    }
-
-    private dispatchChangeEvent(): void {
+    protected dispatchChangeEvent(): void {
         this.input.value = this.value.toString();
-
-        const changeEvent = new Event('change', {
-            bubbles: true,
-            composed: true,
-        });
-
-        this.dispatchEvent(changeEvent);
+        super.dispatchChangeEvent();
     }
 
     /**

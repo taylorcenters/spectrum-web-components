@@ -43,6 +43,7 @@ module.exports = {
         '../packages/progress-circle/stories/*.stories.js',
         '../packages/quick-actions/stories/*.stories.js',
         '../packages/radio/stories/*.stories.js',
+        '../packages/range-slider/stories/*.stories.js',
         '../packages/rule/stories/*.stories.js',
         '../packages/search/stories/*.stories.js',
         '../packages/shared/stories/*.stories.js',
