@@ -37,10 +37,7 @@ THIS FILE IS MACHINE GENERATED. DO NOT EDIT */
     --spectrum-stepper-quiet-width: var(--spectrum-global-dimension-size-600);
     --spectrum-stepper-button-offset: calc(
         var(--spectrum-stepper-button-width) / 2 -
-            var(
-                --spectrum-icon-chevron-down-small-width,
-                var(--spectrum-global-dimension-size-100)
-            ) / 2
+            var(--spectrum-alias-ui-icon-chevron-size-75) / 2
     );
     --spectrum-stepper-quiet-button-width: calc(
         var(--spectrum-stepper-button-width) -
@@ -331,7 +328,7 @@ THIS FILE IS MACHINE GENERATED. DO NOT EDIT */
    * .spectrum-Stepper:hover:not(.is-disabled):not(.is-invalid):not(.is-focused):not(.is-keyboardFocused) .spectrum-Stepper-stepDown,
    * .spectrum-Stepper:hover:not(.is-disabled):not(.is-invalid):not(.is-focused):not(.is-keyboardFocused) .spectrum-Stepper-stepUp */
     border-color: var(
-        --spectrum-textfield-m-border-color-hover,
+        --spectrum-textfield-m-texticon-border-color-hover,
         var(--spectrum-alias-border-color-hover)
     );
 }
@@ -344,7 +341,7 @@ THIS FILE IS MACHINE GENERATED. DO NOT EDIT */
    * .spectrum-Stepper.is-focused .spectrum-Stepper-stepDown,
    * .spectrum-Stepper.is-focused .spectrum-Stepper-stepUp */
     border-color: var(
-        --spectrum-textfield-m-border-color-mouse-focus,
+        --spectrum-textfield-m-texticon-border-color-mouse-focus,
         var(--spectrum-alias-border-color-mouse-focus)
     );
 }
@@ -361,7 +358,7 @@ THIS FILE IS MACHINE GENERATED. DO NOT EDIT */
    * .spectrum-Stepper.is-focused.is-invalid .spectrum-Stepper-stepDown,
    * .spectrum-Stepper.is-focused.is-invalid .spectrum-Stepper-stepUp */
     border-color: var(
-        --spectrum-textfield-m-border-color-error-mouse-focus,
+        --spectrum-textfield-m-texticon-border-color-invalid-mouse-focus,
         var(--spectrum-semantic-negative-color-state-hover)
     );
 }
@@ -373,7 +370,7 @@ THIS FILE IS MACHINE GENERATED. DO NOT EDIT */
    * .spectrum-Stepper.is-keyboardFocused .spectrum-Stepper-input */
     box-shadow: 0 0 0 1px
         var(
-            --spectrum-textfield-m-border-color-key-focus,
+            --spectrum-textfield-m-texticon-border-color-key-focus,
             var(--spectrum-alias-border-color-focus)
         );
 }
@@ -384,7 +381,7 @@ THIS FILE IS MACHINE GENERATED. DO NOT EDIT */
    * .spectrum-Stepper.is-keyboardFocused .spectrum-Stepper-stepDown,
    * .spectrum-Stepper.is-keyboardFocused .spectrum-Stepper-stepUp */
     border-color: var(
-        --spectrum-textfield-m-border-color-key-focus,
+        --spectrum-textfield-m-texticon-border-color-key-focus,
         var(--spectrum-alias-border-color-focus)
     );
 }
@@ -392,7 +389,7 @@ THIS FILE IS MACHINE GENERATED. DO NOT EDIT */
     /* .spectrum-Stepper.is-keyboardFocused.is-invalid */
     box-shadow: 0 0 0 1px
         var(
-            --spectrum-textfield-m-border-color-error-key-focus,
+            --spectrum-textfield-m-texticon-border-color-invalid-key-focus,
             var(--spectrum-alias-border-color-focus)
         );
 }
@@ -401,7 +398,7 @@ THIS FILE IS MACHINE GENERATED. DO NOT EDIT */
     /* .spectrum-Stepper.is-keyboardFocused.is-invalid .spectrum-Stepper-stepDown,
    * .spectrum-Stepper.is-keyboardFocused.is-invalid .spectrum-Stepper-stepUp */
     border-color: var(
-        --spectrum-textfield-m-border-color-error-key-focus,
+        --spectrum-textfield-m-texticon-border-color-invalid-key-focus,
         var(--spectrum-alias-border-color-focus)
     );
 }
@@ -409,7 +406,7 @@ THIS FILE IS MACHINE GENERATED. DO NOT EDIT */
     /* .spectrum-Stepper.is-keyboardFocused.is-invalid .spectrum-Stepper-buttons */
     box-shadow: 0 0 0 1px
         var(
-            --spectrum-textfield-m-border-color-error-key-focus,
+            --spectrum-textfield-m-texticon-border-color-invalid-key-focus,
             var(--spectrum-alias-border-color-focus)
         );
 }
@@ -420,14 +417,14 @@ THIS FILE IS MACHINE GENERATED. DO NOT EDIT */
    * .spectrum-Stepper.is-invalid .spectrum-Stepper-stepDown,
    * .spectrum-Stepper.is-invalid .spectrum-Stepper-stepUp */
     border-color: var(
-        --spectrum-textfield-m-border-color-error,
+        --spectrum-textfield-m-texticon-border-color-invalid,
         var(--spectrum-semantic-negative-color-default)
     );
 }
 :host([invalid][keyboard-focused]) .input {
     /* .spectrum-Stepper.is-invalid.is-keyboardFocused .spectrum-Stepper-input */
     border-color: var(
-        --spectrum-textfield-m-border-color-error-key-focus,
+        --spectrum-textfield-m-texticon-border-color-invalid-key-focus,
         var(--spectrum-alias-border-color-focus)
     );
 }
@@ -437,7 +434,7 @@ THIS FILE IS MACHINE GENERATED. DO NOT EDIT */
    * .spectrum-Stepper.is-invalid.is-keyboardFocused .spectrum-Stepper-input */
     box-shadow: 0 0 0 1px
         var(
-            --spectrum-textfield-m-border-color-error-key-focus,
+            --spectrum-textfield-m-texticon-border-color-invalid-key-focus,
             var(--spectrum-alias-border-color-focus)
         );
 }
@@ -446,7 +443,7 @@ THIS FILE IS MACHINE GENERATED. DO NOT EDIT */
     /* .spectrum-Stepper.is-disabled .spectrum-Stepper-stepDown,
    * .spectrum-Stepper.is-disabled .spectrum-Stepper-stepUp */
     border-color: var(
-        --spectrum-textfield-m-border-color-disabled,
+        --spectrum-textfield-m-texticon-border-color-disabled,
         var(--spectrum-alias-border-color-transparent)
     );
 }
@@ -455,7 +452,7 @@ THIS FILE IS MACHINE GENERATED. DO NOT EDIT */
     /* .spectrum-Stepper-stepDown,
    * .spectrum-Stepper-stepUp */
     border-color: var(
-        --spectrum-textfield-m-border-color,
+        --spectrum-textfield-m-texticon-border-color,
         var(--spectrum-alias-border-color)
     );
 }
@@ -464,7 +461,7 @@ THIS FILE IS MACHINE GENERATED. DO NOT EDIT */
     /* .spectrum-Stepper-stepDown:disabled,
    * .spectrum-Stepper-stepUp:disabled */
     border-color: var(
-        --spectrum-textfield-m-border-color-disabled,
+        --spectrum-textfield-m-texticon-border-color-disabled,
         var(--spectrum-alias-border-color-transparent)
     );
 }
@@ -473,7 +470,7 @@ THIS FILE IS MACHINE GENERATED. DO NOT EDIT */
     /* .spectrum-Stepper--quiet.is-disabled .spectrum-Stepper-stepDown,
    * .spectrum-Stepper--quiet.is-disabled .spectrum-Stepper-stepUp */
     border-color: var(
-        --spectrum-textfield-quiet-m-border-color-disabled,
+        --spectrum-textfield-m-quiet-texticon-border-color-disabled,
         var(--spectrum-alias-border-color-mid)
     );
 }
@@ -482,7 +479,7 @@ THIS FILE IS MACHINE GENERATED. DO NOT EDIT */
     /* .spectrum-Stepper--quiet .spectrum-Stepper-stepDown,
    * .spectrum-Stepper--quiet .spectrum-Stepper-stepUp */
     border-color: var(
-        --spectrum-textfield-quiet-m-border-color,
+        --spectrum-textfield-m-quiet-texticon-border-color,
         var(--spectrum-alias-border-color)
     );
 }
@@ -491,7 +488,7 @@ THIS FILE IS MACHINE GENERATED. DO NOT EDIT */
     /* .spectrum-Stepper--quiet .spectrum-Stepper-stepDown:disabled,
    * .spectrum-Stepper--quiet .spectrum-Stepper-stepUp:disabled */
     border-color: var(
-        --spectrum-textfield-quiet-m-border-color-disabled,
+        --spectrum-textfield-m-quiet-texticon-border-color-disabled,
         var(--spectrum-alias-border-color-mid)
     );
 }
@@ -504,7 +501,7 @@ THIS FILE IS MACHINE GENERATED. DO NOT EDIT */
     /* .spectrum-Stepper--quiet.is-invalid .spectrum-Stepper-input,
    * .spectrum-Stepper--quiet.is-invalid .spectrum-Stepper-stepDown */
     border-color: var(
-        --spectrum-textfield-m-border-color-error,
+        --spectrum-textfield-m-texticon-border-color-invalid,
         var(--spectrum-semantic-negative-color-default)
     );
 }
@@ -524,7 +521,7 @@ THIS FILE IS MACHINE GENERATED. DO NOT EDIT */
    * .spectrum-Stepper--quiet.is-keyboardFocused .spectrum-Stepper-input */
     box-shadow: 0 1px 0 0
         var(
-            --spectrum-textfield-m-border-color-key-focus,
+            --spectrum-textfield-m-texticon-border-color-key-focus,
             var(--spectrum-alias-border-color-focus)
         );
 }
@@ -533,7 +530,7 @@ THIS FILE IS MACHINE GENERATED. DO NOT EDIT */
     /* .spectrum-Stepper--quiet.is-focused .spectrum-Stepper-stepDown,
    * .spectrum-Stepper--quiet.is-keyboardFocused .spectrum-Stepper-stepDown */
     border-color: var(
-        --spectrum-textfield-m-border-color-key-focus,
+        --spectrum-textfield-m-texticon-border-color-key-focus,
         var(--spectrum-alias-border-color-focus)
     );
 }
@@ -553,7 +550,7 @@ THIS FILE IS MACHINE GENERATED. DO NOT EDIT */
    * .spectrum-Stepper--quiet.is-keyboardFocused.is-invalid .spectrum-Stepper-input */
     box-shadow: 0 1px 0 0
         var(
-            --spectrum-textfield-m-border-color-error,
+            --spectrum-textfield-m-texticon-border-color-invalid,
             var(--spectrum-semantic-negative-color-default)
         );
 }
@@ -566,7 +563,7 @@ THIS FILE IS MACHINE GENERATED. DO NOT EDIT */
    * .spectrum-Stepper--quiet.is-keyboardFocused.is-invalid .spectrum-Stepper-input,
    * .spectrum-Stepper--quiet.is-keyboardFocused.is-invalid .spectrum-Stepper-stepDown */
     border-color: var(
-        --spectrum-textfield-m-border-color-error,
+        --spectrum-textfield-m-texticon-border-color-invalid,
         var(--spectrum-semantic-negative-color-default)
     );
 }
