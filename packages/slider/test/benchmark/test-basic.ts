@@ -22,5 +22,6 @@ measureFixtureCreation(html`
         max="100"
         label="Opacity"
         id="opacity-slider"
+        .getAriaHandleText=${(value: number) => value.toString()}
     ></sp-slider>
 `);
