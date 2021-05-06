@@ -17,8 +17,10 @@ import {
     SpectrumElement,
     property,
     query,
+    PropertyValues,
 } from '@spectrum-web-components/base';
 import {
+    openOverlay,
     OverlayDisplayQueryDetail,
     Placement,
 } from '@spectrum-web-components/overlay';
@@ -35,8 +37,17 @@ export class Tooltip extends SpectrumElement {
         return [tooltipStyles];
     }
 
+    @property({ type: Boolean })
+    public auto = false;
+
+    @property({ type: Number, reflect: true })
+    public offset = 6;
+
     @property({ type: Boolean, reflect: true })
     public open = false;
+
+    @property({ type: Boolean, reflect: true })
+    public overlaid = false;
 
     /**
      * @type {"auto" | "auto-start" | "auto-end" | "top" | "bottom" | "right" | "left" | "top-start" | "top-end" | "bottom-start" | "bottom-end" | "right-start" | "right-end" | "left-start" | "left-end" | "none"}
@@ -95,5 +106,73 @@ export class Tooltip extends SpectrumElement {
             <span id="label"><slot></slot></span>
             <span id="tip"></span>
         `;
+    }
+
+    private closeOverlayCallback?: () => void;
+
+    private openOverlay = async (): Promise<void> => {
+        const parentElement = this.parentElement as HTMLElement;
+        this.closeOverlayCallback = await openOverlay(
+            parentElement,
+            'hover',
+            this,
+            {
+                offset: this.offset,
+                placement: this.placement,
+            }
+        );
+    };
+
+    private closeOverlay = (): void => {
+        if (this.closeOverlayCallback) {
+            this.closeOverlayCallback();
+            delete this.closeOverlayCallback;
+        }
+    };
+
+    private overlayClosed = (): void => {
+        this.overlaid = false;
+    };
+
+    private overlayOpened = (): void => {
+        this.overlaid = true;
+    };
+
+    protected updated(changed: PropertyValues<this>): void {
+        if (changed.has('auto')) {
+            const parentElement = this.parentElement as HTMLElement;
+            if (this.auto) {
+                parentElement.addEventListener(
+                    'pointerenter',
+                    this.openOverlay
+                );
+                parentElement.addEventListener('focusin', this.openOverlay);
+                parentElement.addEventListener(
+                    'pointerleave',
+                    this.closeOverlay
+                );
+                parentElement.addEventListener('focusout', this.closeOverlay);
+                parentElement.addEventListener('sp-closed', this.overlayClosed);
+                parentElement.addEventListener('sp-opened', this.overlayOpened);
+            } else {
+                parentElement.removeEventListener(
+                    'pointerenter',
+                    this.openOverlay
+                );
+                parentElement.removeEventListener('focusin', this.openOverlay);
+                parentElement.removeEventListener(
+                    'pointerleave',
+                    this.closeOverlay
+                );
+                parentElement.removeEventListener(
+                    'focusout',
+                    this.closeOverlay
+                );
+                parentElement.removeEventListener(
+                    'sp-closed',
+                    this.overlayClosed
+                );
+            }
+        }
     }
 }

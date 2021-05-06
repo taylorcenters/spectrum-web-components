@@ -17,6 +17,7 @@ import {
     CheckmarkIcon,
     InfoIcon,
 } from '@spectrum-web-components/icons-workflow';
+import '@spectrum-web-components/action-button/sp-action-button.js';
 import '@spectrum-web-components/button/sp-button.js';
 import { Placement } from '@spectrum-web-components/overlay';
 import '@spectrum-web-components/overlay/overlay-trigger.js';
@@ -50,6 +51,8 @@ interface Properties {
     placement?: Placement;
     variant?: string;
     text?: string;
+    offset?: number;
+    delayed?: boolean;
 }
 
 export const Default = ({
@@ -290,3 +293,70 @@ export const overlaidTop = (): TemplateResult => overlaid('top');
 export const overlaidRight = (): TemplateResult => overlaid('right');
 export const overlaidBottom = (): TemplateResult => overlaid('bottom');
 export const overlaidLeft = (): TemplateResult => overlaid('left');
+
+export const auto = ({
+    placement,
+    offset,
+    delayed,
+}: Properties): TemplateResult => html`
+    ${overlayStyles}
+    <sp-action-button>
+        This is a button.
+        <sp-tooltip
+            auto
+            placement=${placement}
+            offset=${offset}
+            ?delayed=${delayed}
+        >
+            This is a tooltip.
+        </sp-tooltip>
+    </sp-action-button>
+`;
+auto.args = {
+    placement: 'top',
+    offset: 6,
+    delayed: false,
+};
+auto.argTypes = {
+    delayed: {
+        name: 'delayed',
+        type: { name: 'boolean', required: false },
+        description: 'Whether to manage the tooltip with the warmup timer',
+    },
+    offset: {
+        name: 'offset',
+        type: { name: 'number', required: false },
+        description:
+            'The pixel distance from the parent element to place the tooltip',
+    },
+    placement: {
+        name: 'placement',
+        type: { name: 'string', required: false },
+        description: 'The placement of the tooltip in relation to its parent',
+        table: {
+            type: { summary: 'string' },
+            defaultValue: { summary: 'top' },
+        },
+        control: {
+            type: 'inline-radio',
+            options: [
+                'auto',
+                'auto-start',
+                'auto-end',
+                'top',
+                'bottom',
+                'right',
+                'left',
+                'top-start',
+                'top-end',
+                'bottom-start',
+                'bottom-end',
+                'right-start',
+                'right-end',
+                'left-start',
+                'left-end',
+                'none',
+            ],
+        },
+    },
+};
