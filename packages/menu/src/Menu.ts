@@ -19,10 +19,7 @@ import {
     PropertyValues,
 } from '@spectrum-web-components/base';
 
-import {
-    MenuItem,
-    MenuItemQueryRoleEventDetail,
- } from './MenuItem.js';
+import { MenuItem, MenuItemQueryRoleEventDetail } from './MenuItem.js';
 import menuStyles from './menu.css.js';
 
 /**
@@ -69,8 +66,7 @@ export class Menu extends SpectrumElement {
      * @private
      */
     public get childRole(): string {
-        const [ selects, role ] = this.resolvedSelectsAndRole
-        console.log(`Resolved: ${selects}, ${role}`)
+        const [selects, role] = this.resolvedSelectsAndRole;
         if (role === 'menu' || role === 'group') {
             switch (selects) {
                 case 'single':
@@ -86,39 +82,33 @@ export class Menu extends SpectrumElement {
     }
 
     private get resolvedSelects(): undefined | String {
-        return this.resolvedSelectsAndRole[0]
+        return this.resolvedSelectsAndRole[0];
     }
 
     private get resolvedSelectsAndRole(): [String | undefined, String | null] {
         if (this.selects === 'inherit') {
-            console.log("resolving with inherits", this)
             let parent = this.parentElement;
             if (parent == null) {
                 const shadowRoot = this.getRootNode() as ShadowRoot;
-                parent = shadowRoot?.host as HTMLElement
+                parent = shadowRoot?.host as HTMLElement;
             }
-            console.log("the parent is", parent)
             while (parent != null) {
-                console.log("the parent is", parent)
                 if (parent.tagName === 'SP-MENU') {
-                    const selects = parent.getAttribute('selects')
-                    const role = parent.getAttribute('role')
-                    console.log(`resolving inherited, ${selects}, ${role}`)
+                    const selects = parent.getAttribute('selects');
+                    const role = parent.getAttribute('role');
                     if (selects === 'single' || selects === 'multiple') {
-                        return [selects, role]
+                        return [selects, role];
                     } else if (selects !== 'inherit') {
                         return [undefined, role];
                     }
                 }
-                parent = parent.parentElement
+                parent = parent.parentElement;
             }
             return [undefined, this.getAttribute('role')];
         } else {
-            console.log("resolving no inherits", this.selects)
-            return [this.selects, this.getAttribute('role')]
+            return [this.selects, this.getAttribute('role')];
         }
     }
-
 
     public constructor() {
         super();
@@ -126,7 +116,6 @@ export class Menu extends SpectrumElement {
         this.addEventListener(
             'sp-menu-item-query-role',
             (event: CustomEvent<MenuItemQueryRoleEventDetail>) => {
-                console.log(`queried role. menu role: ${this.getAttribute('role')}, childRole = ${this.childRole}`)
                 event.stopPropagation();
                 event.detail.role = this.childRole;
             }
@@ -144,14 +133,14 @@ export class Menu extends SpectrumElement {
     }
 
     public focus(): void {
-        console.log('focusing the menu')
-        console.log('menuItems.length', this.menuItems.length)
+        console.log('should focus');
         if (
             !this.menuItems.length ||
             this.menuItems.every((item) => item.disabled)
         ) {
             return;
         }
+        console.trace('can focus');
         super.focus();
         this.focusMenuItemByOffset(0);
     }
@@ -208,7 +197,7 @@ export class Menu extends SpectrumElement {
     }
 
     public async selectOrToggleItem(item: MenuItem): Promise<void> {
-        const resolvedSelects = this.resolvedSelects
+        const resolvedSelects = this.resolvedSelects;
         if (resolvedSelects == null) {
             return;
         }
@@ -222,8 +211,8 @@ export class Menu extends SpectrumElement {
             this.selectedItemsMap.clear();
             this.selectedItemsMap.set(item, true);
             this.value = item.value;
-            this.selected = [ item.value ]
-            this.selectedItems = [ item ]
+            this.selected = [item.value];
+            this.selectedItems = [item];
         } else {
             if (this.selectedItemsMap.has(item)) {
                 this.selectedItemsMap.delete(item);
@@ -249,14 +238,14 @@ export class Menu extends SpectrumElement {
             }
             this.selected = selected;
             this.selectedItems = selectedItems;
-            this.value = this.selected.join(this.valueSeparator)
+            this.value = this.selected.join(this.valueSeparator);
         }
 
         await this.updateComplete;
         const applyDefault = this.dispatchEvent(
             new Event('change', {
                 cancelable: true,
-                bubbles: true
+                bubbles: true,
             })
         );
         if (!applyDefault) {
@@ -291,7 +280,6 @@ export class Menu extends SpectrumElement {
         if (code !== 'ArrowDown' && code !== 'ArrowUp') {
             return;
         }
-        console.log('handling keydown in menu')
         const lastFocusedItem = this.menuItems[this.focusedItemIndex];
         const direction = code === 'ArrowDown' ? 1 : -1;
         const itemToFocus = this.focusMenuItemByOffset(direction);
@@ -321,7 +309,6 @@ export class Menu extends SpectrumElement {
         }
         // if there are no non-disabled items, skip the work to focus a child
         if (!itemToFocus.disabled) {
-            console.log("focusing by offset")
             this.forwardFocusVisibleToitem(itemToFocus);
             this.setAttribute('aria-activedescendant', itemToFocus.id);
         }
@@ -357,13 +344,13 @@ export class Menu extends SpectrumElement {
         }
         index = Math.max(index, 0);
         const selectedItemsMap = new Map<MenuItem, boolean>();
-        const selected: string[] = []
-        const selectedItems: MenuItem[] = []
+        const selected: string[] = [];
+        const selectedItems: MenuItem[] = [];
         this.menuItems.forEach((item, i) => {
             if (item.selected) {
-                selectedItemsMap.set(item, true)
-                selected.push(item.value)
-                selectedItems.push(item)
+                selectedItemsMap.set(item, true);
+                selected.push(item.value);
+                selectedItems.push(item);
             }
             if (i !== index) {
                 item.focused = false;
@@ -380,7 +367,6 @@ export class Menu extends SpectrumElement {
         this.menuItems = [
             ...this.querySelectorAll(`[role="${this.childRole}"]`),
         ] as MenuItem[];
-        console.log('prepItems ', this.menuItems)
         if (!this.menuItems || this.menuItems.length === 0) {
             return;
         }
@@ -406,9 +392,6 @@ export class Menu extends SpectrumElement {
         } catch (error) {
             shouldFocus = this.matches('.focus-visible');
         }
-        console.error(`focusing 1 ${this.matches(':focus-visible')}`, item)
-        console.error(`focusing 2 ${this.matches('.focus-visible')}`, item)
-        console.log(`focusing 3 ${this.isConnected}`)
         item.focused = shouldFocus;
     }
 

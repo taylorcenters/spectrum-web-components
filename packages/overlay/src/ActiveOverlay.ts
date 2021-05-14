@@ -23,6 +23,7 @@ import { reparentChildren } from '@spectrum-web-components/shared';
 import { Color, Scale } from '@spectrum-web-components/theme';
 import styles from './active-overlay.css.js';
 import {
+    OverlayOpenCloseDetail,
     OverlayOpenDetail,
     Placement,
     TriggerInteractions,
@@ -169,8 +170,8 @@ export class ActiveOverlay extends SpectrumElement {
             'button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"]), [focusable]'
         ) as HTMLElement;
         if (firstFocusable) {
-            firstFocusable.focus();
             this.removeAttribute('tabindex');
+            firstFocusable.focus();
             /* c8 ignore next 3 */
         } else {
             super.focus();
@@ -285,6 +286,16 @@ export class ActiveOverlay extends SpectrumElement {
                 if (this.receivesFocus) {
                     this.focus();
                 }
+                this.trigger.dispatchEvent(
+                    new CustomEvent<OverlayOpenCloseDetail>('sp-opened', {
+                        bubbles: true,
+                        composed: true,
+                        cancelable: true,
+                        detail: {
+                            interaction: this.interaction,
+                        },
+                    })
+                );
             });
     }
 

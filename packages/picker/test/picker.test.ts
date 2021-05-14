@@ -255,7 +255,7 @@ describe('Picker', () => {
 
         await elementUpdated(el);
 
-        expect(firstItem.focused, 'not visually focused').to.be.false;
+        expect(firstItem.focused, 'not visually focused start').to.be.false;
 
         el.focus();
         await elementUpdated(el);
@@ -266,7 +266,11 @@ describe('Picker', () => {
         await opened;
 
         expect(el.open).to.be.true;
-        expect(firstItem.focused, 'not visually focused').to.be.true;
+        // Use this cached value to see that it wasn't being focused in "flow".
+        const focused = !!firstItem.focused;
+        // Use this test to see that it was _eventually_ focused.
+        await waitUntil(() => !!firstItem.focused, 'visually focused');
+        expect(focused, 'focused, but not focused in expected time').to.be.true;
 
         const closed = oneEvent(el, 'sp-closed');
         await sendKeys({
@@ -275,7 +279,7 @@ describe('Picker', () => {
         await closed;
 
         expect(el.open).to.be.false;
-        await waitUntil(() => !firstItem.focused, 'not visually focused');
+        await waitUntil(() => !firstItem.focused, 'not visually focused end');
     });
     it('opens without visible focus on a menu item on click', async () => {
         const el = await pickerFixture();
@@ -450,7 +454,7 @@ describe('Picker', () => {
 
         const opened = oneEvent(el, 'sp-opened');
         button.click();
-        await opened
+        await opened;
 
         expect(el.open).to.be.true;
         expect(el.selectedItem?.itemText).to.be.undefined;
@@ -495,7 +499,7 @@ describe('Picker', () => {
 
         const opened2 = oneEvent(el, 'sp-opened');
         button.click();
-        await opened2
+        await opened2;
 
         expect(el.open).to.be.true;
         expect(el.selectedItem?.itemText).to.equal('Select Inverse');
@@ -522,7 +526,7 @@ describe('Picker', () => {
 
         const opened = oneEvent(el, 'sp-opened');
         button.click();
-        await opened
+        await opened;
 
         expect(el.open).to.be.true;
         expect(el.selectedItem?.itemText).to.be.undefined;
@@ -652,7 +656,6 @@ describe('Picker', () => {
         const el = await pickerFixture();
         el.addEventListener('change', (event: Event) => {
             const { value } = event.target as Picker;
-            console.log('change', value);
             selectionSpy(value);
         });
         const button = el.button as HTMLButtonElement;
@@ -689,7 +692,6 @@ describe('Picker', () => {
         const el = await pickerFixture();
         el.addEventListener('change', (event: Event) => {
             const { value } = event.target as Picker;
-            console.log('change', value);
             selectionSpy(value);
         });
         const button = el.button as HTMLButtonElement;

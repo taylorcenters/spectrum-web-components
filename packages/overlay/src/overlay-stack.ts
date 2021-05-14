@@ -152,9 +152,7 @@ export class OverlayStack {
 
     private isClickOverlayActiveForTrigger(trigger: HTMLElement): boolean {
         return this.overlays.some(
-            (item) =>
-                trigger === item.trigger &&
-                item.interaction === 'click'
+            (item) => trigger === item.trigger && item.interaction === 'click'
         );
     }
 
@@ -212,19 +210,19 @@ export class OverlayStack {
                 if (typeof contentWithOpen.open !== 'undefined') {
                     contentWithOpen.open = true;
                 }
-                if (details.receivesFocus === 'auto') {
-                    activeOverlay.focus();
-                }
-                details.trigger.dispatchEvent(
-                    new CustomEvent<OverlayOpenCloseDetail>('sp-opened', {
-                        bubbles: true,
-                        composed: true,
-                        cancelable: true,
-                        detail: {
-                            interaction: details.interaction,
-                        },
-                    })
-                );
+                // if (details.receivesFocus === 'auto') {
+                //     activeOverlay.focus();
+                // }
+                // details.trigger.dispatchEvent(
+                //     new CustomEvent<OverlayOpenCloseDetail>('sp-opened', {
+                //         bubbles: true,
+                //         composed: true,
+                //         cancelable: true,
+                //         detail: {
+                //             interaction: details.interaction,
+                //         },
+                //     })
+                // );
                 return false;
             }
         );

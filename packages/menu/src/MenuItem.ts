@@ -92,12 +92,21 @@ export class MenuItem extends ActionButton {
 
     protected updated(changes: PropertyValues): void {
         super.updated(changes);
-        const role = this.getAttribute('role') 
+        const role = this.getAttribute('role');
         if (changes.has('selected')) {
             if (role === 'option') {
-                this.setAttribute('aria-selected', this.selected ? 'true' : 'false');
-            } else if (role === 'menuitemcheckbox' || role === 'menuitemradio') {
-                this.setAttribute('aria-checked', this.selected ? 'true' : 'false');
+                this.setAttribute(
+                    'aria-selected',
+                    this.selected ? 'true' : 'false'
+                );
+            } else if (
+                role === 'menuitemcheckbox' ||
+                role === 'menuitemradio'
+            ) {
+                this.setAttribute(
+                    'aria-checked',
+                    this.selected ? 'true' : 'false'
+                );
             }
         }
     }
@@ -105,7 +114,6 @@ export class MenuItem extends ActionButton {
     public connectedCallback(): void {
         super.connectedCallback();
         if (!this.hasAttribute('role')) {
-            console.log("menuItem queryRoleEvent")
             const queryRoleEvent = new CustomEvent('sp-menu-item-query-role', {
                 bubbles: true,
                 composed: true,
@@ -114,7 +122,6 @@ export class MenuItem extends ActionButton {
                 },
             });
             this.dispatchEvent(queryRoleEvent);
-            console.log("menuItem queryRoleEvent got ", queryRoleEvent.detail.role)
             this.setAttribute('role', queryRoleEvent.detail.role || 'menuitem');
         }
     }
