@@ -25,6 +25,7 @@ import {
 import '@spectrum-web-components/popover/sp-popover.js';
 import '@spectrum-web-components/button/sp-button.js';
 import { ButtonVariants } from '@spectrum-web-components/button';
+import { MenuItem } from '@spectrum-web-components/menu';
 import { PickerBase } from '@spectrum-web-components/picker';
 import '@spectrum-web-components/icons-ui/icons/sp-icon-chevron100.js';
 import '@spectrum-web-components/icons-workflow/icons/sp-icon-more.js';
@@ -67,7 +68,16 @@ export class SplitButton extends SizedMixin(PickerBase) {
     private trigger!: HTMLButtonElement;
 
     protected listRole: 'listbox' | 'menu' = 'menu';
-    protected itemRole = 'menuitem';
+
+    @property({ attribute: false })
+    public get selectedItem(): undefined | MenuItem {
+        const selectedItems = this.optionsMenu?.selectedItems
+        if (selectedItems != null && selectedItems.length > 0) {
+            return selectedItems[0];
+        } else {
+            return
+        }
+    }
 
     public focus(): void {
         if (this.disabled) {
@@ -161,10 +171,13 @@ export class SplitButton extends SizedMixin(PickerBase) {
     protected updated(changedProperties: PropertyValues): void {
         super.updated(changedProperties);
         if (changedProperties.has('value')) {
-            this.manageSplitButtonItems();
+            // FIXME: figure out
+            //this.manageSplitButtonItems();
         }
     }
 
+    // FIXME: figure out
+    /*
     protected manageSelection(): void {
         super.manageSelection();
         this.manageSplitButtonItems();
@@ -188,4 +201,5 @@ export class SplitButton extends SizedMixin(PickerBase) {
             this.manageSplitButtonItems();
         }
     }
+    */
 }

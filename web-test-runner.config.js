@@ -54,7 +54,7 @@ export default {
     },
     testFramework: {
         config: {
-            timeout: 100000,
+            timeout: 10000,
         },
     },
     groups: [
@@ -83,6 +83,7 @@ export default {
     group: 'unit',
     browsers: [
         playwrightLauncher({ product: 'chromium' }),
+        /*
         playwrightLauncher({ product: 'webkit' }),
         playwrightLauncher({
             product: 'firefox',
@@ -99,5 +100,6 @@ export default {
                 },
             },
         }),
+        */
     ],
 };

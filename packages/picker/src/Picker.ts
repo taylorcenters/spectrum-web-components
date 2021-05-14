@@ -32,10 +32,9 @@ import '@spectrum-web-components/icons-ui/icons/sp-icon-chevron100.js';
 import '@spectrum-web-components/icons-workflow/icons/sp-icon-alert.js';
 import '@spectrum-web-components/menu/sp-menu.js';
 import {
+    Menu,
     MenuItem,
     MenuItemQueryRoleEventDetail,
-    Menu,
-    MenuQueryRoleEventDetail,
 } from '@spectrum-web-components/menu';
 import '@spectrum-web-components/popover/sp-popover.js';
 import { Popover } from '@spectrum-web-components/popover';
@@ -54,6 +53,8 @@ const chevronClass = {
 };
 
 type PickerSize = Exclude<ElementSize, 'xxl'>;
+
+let pickerId = 0
 
 /**
  * @element sp-picker
@@ -118,10 +119,20 @@ export class PickerBase extends SizedMixin(Focusable) {
     public quiet = false;
 
     @property({ type: String })
-    public value = '';
+    public get value(): string {
+        return this.optionsMenu?.value || ''
+    }
 
-    @property({ attribute: false })
-    public selectedItem?: MenuItem;
+    private initialValue! : string;
+
+    public set value(value: string) {
+        if (this.optionsMenu != null) {
+            this.optionsMenu.value = value;
+        } else {
+            console.error("help with the order")
+            this.initialValue = value
+        }
+    }
 
     private closeOverlay?: () => void;
 
@@ -129,26 +140,19 @@ export class PickerBase extends SizedMixin(Focusable) {
     private popover!: Popover;
 
     protected listRole: 'listbox' | 'menu' = 'listbox';
-    protected itemRole = 'option';
+
+    protected pickerId = ++pickerId;
 
     public constructor() {
         super();
-        this.onKeydown = this.onKeydown.bind(this);
-
         this.addEventListener(
             'sp-menu-item-query-role',
             (event: CustomEvent<MenuItemQueryRoleEventDetail>) => {
                 event.stopPropagation();
-                event.detail.role = this.itemRole;
+                event.detail.role = this.listRole === 'listbox' ? 'option' : 'menuitem' // FIXME: resolve from menu if possible (but timing...)
             }
         );
-        this.addEventListener(
-            'sp-menu-query-role',
-            (event: CustomEvent<MenuQueryRoleEventDetail>) => {
-                event.stopPropagation();
-                event.detail.role = this.listRole;
-            }
-        );
+        this.onKeydown = this.onKeydown.bind(this);
     }
 
     public get focusElement(): HTMLElement {
@@ -171,6 +175,7 @@ export class PickerBase extends SizedMixin(Focusable) {
     }
 
     protected onButtonClick(): void {
+        console.log("toggling for button click")
         this.toggle();
     }
 
@@ -190,9 +195,6 @@ export class PickerBase extends SizedMixin(Focusable) {
             }
             return;
         }
-        if (target.value) {
-            this.setValueFromItem(target);
-        }
     }
 
     protected onKeydown = (event: KeyboardEvent): void => {
@@ -200,42 +202,21 @@ export class PickerBase extends SizedMixin(Focusable) {
             return;
         }
         event.preventDefault();
+        console.log("toggling for onKeyDown")
         this.toggle(true);
     };
-
-    public async setValueFromItem(item: MenuItem): Promise<void> {
-        const oldSelectedItem = this.selectedItem;
-        const oldValue = this.value;
-        this.selectedItem = item;
-        this.value = item.value;
-        this.open = false;
-        await this.updateComplete;
-        const applyDefault = this.dispatchEvent(
-            new Event('change', {
-                cancelable: true,
-            })
-        );
-        if (!applyDefault) {
-            this.selectedItem = oldSelectedItem;
-            this.value = oldValue;
-            this.open = true;
-            return;
-        }
-        if (oldSelectedItem) {
-            oldSelectedItem.selected = false;
-        }
-        item.selected = true;
-    }
 
     public toggle(target?: boolean): void {
         if (this.readonly) {
             return;
         }
         this.open = typeof target !== 'undefined' ? target : !this.open;
+        console.log(`toggling updated to ${this.open}`)
     }
 
     public close(): void {
         if (this.readonly) {
+            console.log("Can't close readonly!")
             return;
         }
         this.open = false;
@@ -280,14 +261,17 @@ export class PickerBase extends SizedMixin(Focusable) {
                 }
             };
         });
+        await this.optionsMenu.updateComplete // TODO: needed?
 
         this.sizePopover(this.popover);
         const { popover } = this;
+        console.log(`Opening overlay for picker ${this.pickerId}`)
         this.closeOverlay = await Picker.openOverlay(this, 'inline', popover, {
             placement: this.placement,
             receivesFocus: 'auto',
         });
-        this.manageSelection();
+        console.error(`Overlay opened for picker ${this.pickerId}`, this.closeOverlay)
+        console.error(`Overlay opened & optionsMenu updated ${this.pickerId}`, this.closeOverlay)
         this.menuStateResolver();
     }
 
@@ -300,10 +284,16 @@ export class PickerBase extends SizedMixin(Focusable) {
     }
 
     private closeMenu(): void {
+        console.log(`closeMenu called for picker ${this.pickerId}`)
         if (this.closeOverlay) {
+            console.log(`Really closing overlay for picker ${this.pickerId}`)
             this.closeOverlay();
             delete this.closeOverlay;
         }
+    }
+
+    protected get buttonText(): void | string {
+        return
     }
 
     protected get buttonContent(): TemplateResult[] {
@@ -313,8 +303,8 @@ export class PickerBase extends SizedMixin(Focusable) {
                     id="label"
                     class=${ifDefined(this.value ? undefined : 'placeholder')}
                 >
-                    ${this.value && this.selectedItem
-                        ? this.selectedItem.itemText
+                    ${this.buttonText
+                        ? this.buttonText
                         : html`
                               <slot name="label">${this.label}</slot>
                           `}
@@ -358,7 +348,6 @@ export class PickerBase extends SizedMixin(Focusable) {
     protected get renderPopover(): TemplateResult {
         return html`
             <sp-popover
-                open
                 id="popover"
                 @click=${this.onClick}
                 @sp-overlay-closed=${this.onOverlayClosed}
@@ -378,11 +367,27 @@ export class PickerBase extends SizedMixin(Focusable) {
         ] as MenuItem[];
     }
 
+    protected async onMenuChange() {
+        console.log("onMenuChange")
+        await this.updateComplete;
+        if (this.open) {
+            console.log('onMenuChange setting open to the false')
+            this.open = false;
+        }
+    }
+
     protected firstUpdated(changedProperties: PropertyValues): void {
         super.firstUpdated(changedProperties);
 
         // Since the sp-menu gets reparented by the popover, initialize it here
         this.optionsMenu = this.shadowRoot.querySelector('sp-menu') as Menu;
+
+        console.log("registering change")
+        this.optionsMenu.addEventListener('change', () => this.onMenuChange())
+
+        if (this.initialValue != null) {
+            this.optionsMenu.value = this.initialValue;
+        }
 
         this.updateMenuItems();
 
@@ -400,11 +405,13 @@ export class PickerBase extends SizedMixin(Focusable) {
             changedProperties.has('value') &&
             !changedProperties.has('selectedItem')
         ) {
-            this.manageSelection();
+            // FIXME: pass on to menu
+            // this.manageSelection();
         }
         if (changedProperties.has('disabled') && this.disabled) {
             this.open = false;
         }
+        console.log(`updated this.open = ${this.open} changedProperties.get('open'): ${changedProperties.get('open')}`)
         if (
             changedProperties.has('open') &&
             (this.open || typeof changedProperties.get('open') !== 'undefined')
@@ -413,38 +420,12 @@ export class PickerBase extends SizedMixin(Focusable) {
                 (res) => (this.menuStateResolver = res)
             );
             if (this.open) {
+                console.log('update open')
                 this.openMenu();
             } else {
+                console.log('update close')
                 this.closeMenu();
             }
-        }
-    }
-
-    protected manageSelection(): void {
-        if (!this.open) {
-            this.updateMenuItems();
-        }
-        /* c8 ignore next 3 */
-        if (this.menuItems.length > 0) {
-            let selectedItem: MenuItem | undefined;
-            this.menuItems.forEach((item) => {
-                if (this.value === item.value && !item.disabled) {
-                    selectedItem = item;
-                } else {
-                    item.selected = false;
-                }
-            });
-            if (selectedItem) {
-                selectedItem.selected = true;
-                this.selectedItem = selectedItem;
-            } else {
-                this.value = '';
-                this.selectedItem = undefined;
-            }
-            if (this.open) {
-                this.optionsMenu.updateSelectedItemIndex();
-            }
-            return;
         }
     }
 
@@ -464,6 +445,7 @@ export class PickerBase extends SizedMixin(Focusable) {
     }
 
     public disconnectedCallback(): void {
+        console.log('disconnecting')
         this.open = false;
 
         super.disconnectedCallback();
@@ -475,6 +457,31 @@ export class Picker extends PickerBase {
         return [pickerStyles, chevronStyles];
     }
 
+    protected get buttonText(): void | string {
+        return this.value && this._buttonText
+            ? this._buttonText
+            : undefined
+    }
+
+    @property({ attribute: false })
+    public get selectedItem(): undefined | MenuItem {
+        const selectedItems = this.optionsMenu?.selectedItems
+        if (selectedItems != null && selectedItems.length > 0) {
+            return selectedItems[0];
+        } else {
+            return
+        }
+    }
+
+    @property({ attribute: false })
+    private _buttonText?: string;
+
+    protected async onMenuChange() {
+        console.log("is it just weird?");
+        super.onMenuChange();
+        requestAnimationFrame( () => this._buttonText = this.selectedItem?.itemText);
+    }
+
     protected onKeydown = (event: KeyboardEvent): void => {
         const { code } = event;
         if (!code.startsWith('Arrow') || this.readonly) {
@@ -482,26 +489,9 @@ export class Picker extends PickerBase {
         }
         event.preventDefault();
         if (code === 'ArrowUp' || code === 'ArrowDown') {
+            console.log("toggling for keyboard")
             this.toggle(true);
             return;
-        }
-        const selectedIndex = this.selectedItem
-            ? this.menuItems.indexOf(this.selectedItem)
-            : -1;
-        // use a positive offset to find the first non-disabled item when no selection is available.
-        const nextOffset = !this.value || code === 'ArrowRight' ? 1 : -1;
-        let nextIndex = selectedIndex + nextOffset;
-        while (
-            this.menuItems[nextIndex] &&
-            this.menuItems[nextIndex].disabled
-        ) {
-            nextIndex += nextOffset;
-        }
-        if (!this.menuItems[nextIndex] || this.menuItems[nextIndex].disabled) {
-            return;
-        }
-        if (!this.value || nextIndex !== selectedIndex) {
-            this.setValueFromItem(this.menuItems[nextIndex]);
         }
     };
 }
