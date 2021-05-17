@@ -3478,6 +3478,11 @@
   resolved "https://registry.yarnpkg.com/@spectrum-css/tray/-/tray-1.0.3.tgz#5a1071a561cb339f9f93422c655dccce54201002"
   integrity sha512-Sw7FUw7bDbSDaEMjnJulZIefFQ2GI+JY+h1Jh6vEgLRzMNAwuGHg2Zjy/B3Znah4NhkEN1033VyEfiGQMxtf3A==
 
+"@spectrum-css/treeview@^3.0.0":
+  version "3.0.0"
+  resolved "https://registry.yarnpkg.com/@spectrum-css/treeview/-/treeview-3.0.0.tgz#906608cfa4122cbe6c563a604348ef72ab78d043"
+  integrity sha512-W5OwVrXYNfv9b3lTSdIDxWyxGEsjED0OS/tIuNnYLePv+l/zOoxgHHq+WkNuRTl5kInYhYkZ4poqqDjFZBk/zA==
+
 "@spectrum-css/typography@^3.0.2":
   version "3.0.2"
   resolved "https://registry.yarnpkg.com/@spectrum-css/typography/-/typography-3.0.2.tgz#ea3ca0a60e18064527819d48c8c4364cab4fcd38"
@@ -4011,7 +4016,7 @@
   resolved "https://registry.yarnpkg.com/@types/mocha/-/mocha-5.2.7.tgz#315d570ccb56c53452ff8638738df60726d5b6ea"
   integrity sha512-NYrtPht0wGzhwe9+/idPaBB+TqkY9AhTvOLMkThm0IoEfLaiVQZwBwyJ5puCkO3AUCWrmcoePjp2mbFocKy4SQ==
 
-"@types/mocha@^8.2.0":
+"@types/mocha@^8.2.0", "@types/mocha@^8.2.2":
   version "8.2.2"
   resolved "https://registry.yarnpkg.com/@types/mocha/-/mocha-8.2.2.tgz#91daa226eb8c2ff261e6a8cbf8c7304641e095e0"
   integrity sha512-Lwh0lzzqT5Pqh6z61P3c3P5nm6fzQK/MMHl9UKeneAeInVflBSz1O2EkX6gM6xfJd7FBXBY5purtLx7fUiZ7Hw==
