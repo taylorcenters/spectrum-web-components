@@ -30,6 +30,9 @@ export class RadioGroup extends FieldGroup {
     @property({ type: String })
     public name = '';
 
+    @property({ reflect: true })
+    public selected = '';
+
     @queryAssignedNodes('')
     public defaultNodes!: Node[];
 
@@ -119,6 +122,7 @@ export class RadioGroup extends FieldGroup {
                 break;
             case 'PageUp':
             case 'PageDown':
+            default:
                 const tagsSiblings = [
                     ...(this.getRootNode() as Document).querySelectorAll<RadioGroup>(
                         'sp-radio-group'
@@ -144,12 +148,12 @@ export class RadioGroup extends FieldGroup {
                 }
                 nextRadioGroup.focus();
                 return;
-            default:
-                return;
         }
         event.preventDefault();
         const nextRadio = circularIndexedElement(this.buttons, nextIndex);
+        activeElement.tabIndex = -1;
         this._setSelected(nextRadio.value);
+        nextRadio.tabIndex = 0;
         nextRadio.focus();
     };
 
@@ -196,12 +200,9 @@ export class RadioGroup extends FieldGroup {
         this.validateRadios();
     }
 
-    @property({ reflect: true })
-    public selected = '';
-
     protected render(): TemplateResult {
         return html`
-            <slot></slot>
+            <slot role="radiogroup"></slot>
         `;
     }
 
