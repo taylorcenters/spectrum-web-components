@@ -126,10 +126,27 @@ export class ColorArea extends SpectrumElement {
             format,
             isString,
         };
-        const { h, s, v } = this._color.toHsv();
-        this.hue = h;
-        this.x = s;
-        this.y = 1 - v;
+
+        if (isString && format.startsWith('hs')) {
+            const hueExp = /^hs[v|va|l|la]\((\d{1,3})/;
+            const values = hueExp.exec(color as string);
+
+            if (values !== null) {
+                const [, h] = values;
+                this.hue = Number(h);
+            }
+        } else if (!isString && format.startsWith('hs')) {
+            const colorInput = this._color.originalInput;
+            const colorValues = Object.values(colorInput);
+            this.hue = colorValues[0];
+        } else {
+            const { h, s, v } = this._color.toHsv();
+            if (s >= 0) {
+                this.hue = h;
+            }
+            this.x = s;
+            this.y = 1 - v;
+        }
         this.requestUpdate('color', oldValue);
     }
 
